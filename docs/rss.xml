@@ -1,5 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>BaoSiZe's blog page</title><link>https://BaoSiZe-bot.github.io</link><description>The home of an unnamed fish</description><copyright>BaoSiZe's blog page</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.luogu.com.cn/upload/usericon/576768.png</url><title>avatar</title><link>https://BaoSiZe-bot.github.io</link></image><lastBuildDate>Mon, 26 Aug 2024 07:31:22 +0000</lastBuildDate><managingEditor>BaoSiZe's blog page</managingEditor><ttl>60</ttl><webMaster>BaoSiZe's blog page</webMaster><item><title>三角函数和差角公式</title><link>https://BaoSiZe-bot.github.io/post/3.html</link><description>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>BaoSiZe's blog page</title><link>https://BaoSiZe-bot.github.io</link><description>The home of an unnamed fish</description><copyright>BaoSiZe's blog page</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.luogu.com.cn/upload/usericon/576768.png</url><title>avatar</title><link>https://BaoSiZe-bot.github.io</link></image><lastBuildDate>Wed, 23 Oct 2024 01:16:42 +0000</lastBuildDate><managingEditor>BaoSiZe's blog page</managingEditor><ttl>60</ttl><webMaster>BaoSiZe's blog page</webMaster><item><title>CSP-S历年算法</title><link>https://BaoSiZe-bot.github.io/post/4.html</link><description># CSP-S历年考点&#13;
+&#13;
+## 2023~2020均四道题目&#13;
+&#13;
+| 年份 | T1         | T2           | T3           | T4                                |&#13;
+|------|------------|--------------|--------------|-----------------------------------|&#13;
+| 2023 | 枚举       | 哈希         | 模拟         | 二分套二分加栈                    |&#13;
+| 2022 | 广搜       | 贪心， ST 表 | Sum Hash     | DP ，矩阵乘法                     |&#13;
+| 2021 | 堆 / 数学  | DP           | 模拟，栈     | 网络流最小割（读题 + 推导，最短路 |&#13;
+| 2020 | 模拟，数学 | 数学，二进制 | 拓扑排序，DP | 贪心，双端队列                    |&#13;
+&#13;
+## 2019年有6道题目，单独整理&#13;
+| 题目 | D1T1 | D1T2 | D1T3       | D2T1               | D2T2           | D2T3          |&#13;
+|------|------|------|------------|--------------------|----------------|---------------|&#13;
+| 算法 | 数学 | 树论 | 树论，链表 | 前缀和， DP ，容斥 | 贪心，单调队列 | 树形DP ，倍增 |&#13;
+。</description><guid isPermaLink="true">https://BaoSiZe-bot.github.io/post/4.html</guid><pubDate>Tue, 22 Oct 2024 15:03:55 +0000</pubDate></item><item><title>三角函数和差角公式</title><link>https://BaoSiZe-bot.github.io/post/3.html</link><description>
 # 三角函数和差角公式
 
 ## 和角公式
