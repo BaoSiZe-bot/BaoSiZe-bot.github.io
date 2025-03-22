@@ -126,10 +126,10 @@ $\scriptsize{题面保证了答案不大于8\times10^{18}，运算过程中需�
     res += g[i][k];</pre></div>
 <h1><a href="https://vjudge.net/contest/702006#problem/C" rel="nofollow">T3</a> Distinct Values Queries</h1>
 <p>题目问一个区间内不同元素的个数，我们可以考虑求出每一个区间内的数在该区间中最后一次出现的位置。<br>
-如果题目中的$b$不变，我们可以直接从b向左扫，记录一个数组$lst_x$表示$x$第一次出现的位置，$f_i$表示$[i=lst_{a_i}]$，如果$a_i$在此之前没有出现过（即$lst_{a_i} = 0$），那么$lst_{a_i}\leftarrow i,f_i\leftarrow \text{true}$。容易得知，答案为：$\sum^{b}<em>{i=a}f_i$<br>
-问题就会转化为：维护一个数组$f_i$，支持单点修改，区间求和。<br>
+如果题目中的$b$不变，我们可以直接从b向左扫，记录一个数组$lst_x$表示$x$第一次出现的位置，$f_i$表示$[i=lst_{a_i}]$，如果$a_i$在此之前没有出现过（即$lst_{a_i} = 0$），那么$lst_{a_i}\leftarrow i,f_i\leftarrow \text{true}$。容易得知，答案为：$\sum^{b}_{i=a}f_i$</p>
+<p>问题就会转化为：维护一个数组$f_i$，支持单点修改，区间求和。<br>
 直接用树状数组维护即可。<br>
-但是现在的$b$并不是一成不变的，显然最容易维护的情况是$b$逐次递增，这个时候只有$lst</em>{i\in (b_{i-1},b_{i}]}$是会改变的，那么我们只需要将询问离线下来，按$b$排序，每次询问把<br>
+但是现在的$b$并不是一成不变的，显然最容易维护的情况是$b$逐次递增，这个时候只有$lst_{i\in (b_{i-1},b_{i}]}$是会改变的，那么我们只需要将询问离线下来，按$b$排序，每次询问把<br>
 $(b_{i-1},b_{i}]$遍历一遍即可。</p>
 <div class="highlight highlight-source-c++"><pre class="notranslate"><span class="pl-en">sort</span>(qr + <span class="pl-c1">1</span>, qr + q + <span class="pl-c1">1</span>, [](<span class="pl-k">const</span> Q &amp;x, <span class="pl-k">const</span> Q &amp;y) { <span class="pl-k">return</span> x.<span class="pl-smi">b</span> &lt; y.<span class="pl-smi">b</span>; } );
 
@@ -168,8 +168,8 @@ fw.add(lsh[<span class="pl-c1">0</span>], <span class="pl-c1">1</span>);
 $s[l,r]$中每个字符的出现次数等于$T$中那个字符的出现次数</li>
 </ol>
 <p>第二个要求是非常好维护的，主要考虑第一个要求<br>
-对于第一个要求有一个 trick, 记$f_i\leftarrow [s_l\ge s_{l+1}]$，那么这个要求就可以转化为$\sum^{r-1}_{l}f_i=0$<br>
-每次做操作一时，只需要判断新的$c$和邻项$的大小关系并更新$f_i$和出现次数即可。<br>
+对于第一个要求有一个 trick, 记$f_i\leftarrow [s_l\ge s_{l+1}]$，那么这个要求就可以转化为$\sum^{r-1}_{l}f_i=0$</p>
+<p>每次做操作一时，只需要判断新的$c$和邻项$的大小关系并更新$f_i$和出现次数即可。<br>
 那么问题就转化为了单点修改，区间查询，使用树状数组即可。</p>
 <div class="highlight highlight-source-c++"><pre class="notranslate">fenwick&lt;N, ll&gt; fw[<span class="pl-c1">27</span>]; <span class="pl-c"><span class="pl-c">//</span> fw[26]就是上文的f</span>
 <span class="pl-k">void</span> <span class="pl-en">init</span>()
