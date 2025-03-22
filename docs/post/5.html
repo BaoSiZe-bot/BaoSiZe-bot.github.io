@@ -169,7 +169,7 @@ $s[l,r]$中每个字符的出现次数等于$T$中那个字符的出现次数</l
 </ol>
 <p>第二个要求是非常好维护的，主要考虑第一个要求<br>
 对于第一个要求有一个 trick, 记$f_i\leftarrow [s_l\ge s_{l+1}]$，那么这个要求就可以转化为$\sum^{r-1}_{l}f_i=0$</p>
-<p>每次做操作一时，只需要判断新的$c$和邻项$的大小关系并更新$f_i$和出现次数即可。<br>
+<p>每次做操作一时，只需要判断新的$c$和邻项的大小关系并更新$f_i$和出现次数即可。<br>
 那么问题就转化为了单点修改，区间查询，使用树状数组即可。</p>
 <div class="highlight highlight-source-c++"><pre class="notranslate">fenwick&lt;N, ll&gt; fw[<span class="pl-c1">27</span>]; <span class="pl-c"><span class="pl-c">//</span> fw[26]就是上文的f</span>
 <span class="pl-k">void</span> <span class="pl-en">init</span>()
