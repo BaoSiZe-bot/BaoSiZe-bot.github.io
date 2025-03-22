@@ -11,10 +11,10 @@
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
 <meta name="description" content="# [T1](https://vjudge.net/contest/702006#problem/A) 三元上升子序列
-题目要求$i\text{\textless} j\text{\textless} k$的$a_i\text{\textless} a_j\text{\textless} a_k$三元组数量,经典的套路是枚举中间数$j$。">
+题目要求$i\textless j\textless k$的$a_i\textless a_j\textless a_k$三元组数量,经典的套路是枚举中间数$j$。">
 <meta property="og:title" content="3.16 总结">
 <meta property="og:description" content="# [T1](https://vjudge.net/contest/702006#problem/A) 三元上升子序列
-题目要求$i\text{\textless} j\text{\textless} k$的$a_i\text{\textless} a_j\text{\textless} a_k$三元组数量,经典的套路是枚举中间数$j$。">
+题目要求$i\textless j\textless k$的$a_i\textless a_j\textless a_k$三元组数量,经典的套路是枚举中间数$j$。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://BaoSiZe-bot.github.io/post/5.html">
 <meta property="og:image" content="https://cdn.luogu.com.cn/upload/usericon/576768.png">
@@ -86,8 +86,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><h1><a href="https://vjudge.net/contest/702006#problem/A" rel="nofollow">T1</a> 三元上升子序列</h1>
-<p>题目要求$i\text{\textless} j\text{\textless} k$的$a_i\text{\textless} a_j\text{\textless} a_k$三元组数量,经典的套路是枚举中间数$j$。<br>
-枚举了$j$之后的事情就比较简单，直接用树状数组正向遍历维护$i\text{\textless} j$的$a_i\text{\textless} a_j$二元组数量，反向遍历$j\text{\textless} k$的$a_j\text{\textless} a_k$二元组数量，根据乘法原理再相乘即可。<br>
+<p>题目要求$i\textless j\textless k$的$a_i\textless a_j\textless a_k$三元组数量,经典的套路是枚举中间数$j$。<br>
+枚举了$j$之后的事情就比较简单，直接用树状数组正向遍历维护$i\textless j$的$a_i\textless a_j$二元组数量，反向遍历$j\textless k$的$a_j\textless a_k$二元组数量，根据乘法原理再相乘即可。<br>
 $\scriptsize{理论情况下，三元组个数会达到N^3个，需要开\text{long long}}$</p>
 <div class="highlight highlight-source-c++"><pre class="notranslate">fw.clear(N - <span class="pl-c1">1</span>);
 <span class="pl-k">for</span> (<span class="pl-k">int</span> i = <span class="pl-c1">1</span>; i &lt;= n; ++i)
@@ -107,7 +107,7 @@ fw.clear(N - <span class="pl-c1">1</span>);
 <p>长度为二的上升序列个数是易求的，那么如果要将长度扩展到3，容易想到可以  DP。<br>
 设$dp_{i,j}$表示以$a_i$结尾，长度为$j$的上升子序列个数，那么我们可以得到状态转移方程：<br>
 $$<br>
-dp_{i,j}\leftarrow \sum_{p\in \mathbb{N}^{\tiny{+}} \wedge p\text{\textless} i \wedge a_p&lt;a_i}dp_{p,j-1}<br>
+dp_{i,j}\leftarrow \sum_{p\in \mathbb{N}^{\tiny{+}} \wedge p\textless i \wedge a_p&lt;a_i}dp_{p,j-1}<br>
 $$<br>
 观察到式中的求和是前缀和，每次求值只涉及单点修改，考虑使用树状数组维护，即维护$k$个树状数组，第$j$个树状数组的第$i$个前缀和表示到$a_i$为止（并非以$a_i$结尾）的长度为$j$的上升子序列个数即可。<br>
 $\scriptsize{题面保证了答案不大于8\times10^{18}，运算过程中需要开\text{unsigned long long}}$</p>
@@ -126,10 +126,7 @@ $\scriptsize{题面保证了答案不大于8\times10^{18}，运算过程中需�
     res += g[i][k];</pre></div>
 <h1><a href="https://vjudge.net/contest/702006#problem/C" rel="nofollow">T3</a> Distinct Values Queries</h1>
 <p>题目问一个区间内不同元素的个数，我们可以考虑求出每一个区间内的数在该区间中最后一次出现的位置。<br>
-如果题目中的$b$不变，我们可以直接从b向左扫，记录一个数组$lst_x$表示$x$第一次出现的位置，$f_i$表示$[i=lst_{a_i}]$，如果$a_i$在此之前没有出现过（即$lst_{a_i} = 0$），那么$lst_{a_i}\leftarrow i,f_i\leftarrow \text{true}$。容易得知，答案为：<br>
-$$<br>
-\sum^{b}<em>{i=a}f_i<br>
-$$<br>
+如果题目中的$b$不变，我们可以直接从b向左扫，记录一个数组$lst_x$表示$x$第一次出现的位置，$f_i$表示$[i=lst_{a_i}]$，如果$a_i$在此之前没有出现过（即$lst_{a_i} = 0$），那么$lst_{a_i}\leftarrow i,f_i\leftarrow \text{true}$。容易得知，答案为：$\sum^{b}<em>{i=a}f_i$<br>
 问题就会转化为：维护一个数组$f_i$，支持单点修改，区间求和。<br>
 直接用树状数组维护即可。<br>
 但是现在的$b$并不是一成不变的，显然最容易维护的情况是$b$逐次递增，这个时候只有$lst</em>{i\in (b_{i-1},b_{i}]}$是会改变的，那么我们只需要将询问离线下来，按$b$排序，每次询问把<br>
@@ -152,8 +149,8 @@ fw.clear(n)
     res[qr[i].<span class="pl-smi">id</span>] = fw.<span class="pl-c1">qry</span>(qr[i].<span class="pl-smi">b</span>) - fw.<span class="pl-c1">qry</span>(qr[i].<span class="pl-smi">a</span> - <span class="pl-c1">1</span>);
 }</pre></div>
 <h1><a href="https://vjudge.net/contest/702006#problem/D" rel="nofollow">T4</a> Petya and Array</h1>
-<p>记$a$的前缀和为$s$，那么题目要求的其实就是满足$s_r-s_{l-1}\text{\textless} t$的$\left( l,r \right)$个数。<br>
-移项，可以得到$s_{l-1}\text{\textgreater} s_r-t$，那我们要求的就是：<br>
+<p>记$a$的前缀和为$s$，那么题目要求的其实就是满足$s_r-s_{l-1}\textless t$的$\left( l,r \right)$个数。<br>
+移项，可以得到$s_{l-1}\textgreater s_r-t$，那我们要求的就是：<br>
 对于每一个$r$，比$s_r-t$更大的$s_{l-1}$的个数之和。<br>
 离散化后用树状数组维护即可。</p>
 <div class="highlight highlight-source-c++"><pre class="notranslate">fw.clear(cnt);
@@ -166,16 +163,13 @@ fw.add(lsh[<span class="pl-c1">0</span>], <span class="pl-c1">1</span>);
 <h1><a href="https://vjudge.net/contest/702006#problem/E" rel="nofollow">T5</a> Substring of Sorted String</h1>
 <p>我们可以把询问的要求拆成两部分：</p>
 <ol>
-<li>$s_l\text{\textless} s_{l+1}\dots \text{\textless} s_{r-1}\text{\textless} s_r$</li>
+<li>$s_l\textless s_{l+1}\dots \textless s_{r-1}\textless s_r$</li>
 <li>
 $s[l,r]$中每个字符的出现次数等于$T$中那个字符的出现次数</li>
 </ol>
 <p>第二个要求是非常好维护的，主要考虑第一个要求<br>
-对于第一个要求有一个 trick, 记$f_i\leftarrow [s_l\ge s_{l+1}]$，那么这个要求就可以转化为<br>
-$$<br>
-\sum^{r-1}<em>{l}f_i=0<br>
-$$<br>
-每次做操作一时，只需要判断新的$c$和$s</em>{x-1}$以及$s_{x+1}$的大小关系病跟新$f_i$和出现次数即可。<br>
+对于第一个要求有一个 trick, 记$f_i\leftarrow [s_l\ge s_{l+1}]$，那么这个要求就可以转化为$\sum^{r-1}_{l}f_i=0$<br>
+每次做操作一时，只需要判断新的$c$和邻项$的大小关系并更新$f_i$和出现次数即可。<br>
 那么问题就转化为了单点修改，区间查询，使用树状数组即可。</p>
 <div class="highlight highlight-source-c++"><pre class="notranslate">fenwick&lt;N, ll&gt; fw[<span class="pl-c1">27</span>]; <span class="pl-c"><span class="pl-c">//</span> fw[26]就是上文的f</span>
 <span class="pl-k">void</span> <span class="pl-en">init</span>()
@@ -312,7 +306,11 @@ console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 
 <script>
 document.getElementById("pathHome").setAttribute("d",IconList["home"]);
 document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
-
+cmButton=document.getElementById("cmButton");
+    span=document.createElement("span");
+    span.setAttribute("class","Counter");
+    span.innerHTML="1";
+    cmButton.appendChild(span);
 
 
 function openComments(){
