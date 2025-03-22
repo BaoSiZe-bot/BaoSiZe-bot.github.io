@@ -129,8 +129,7 @@ $\scriptsize{题面保证了答案不大于8\times10^{18}，运算过程中需�
 如果题目中的$b$不变，我们可以直接从b向左扫，记录一个数组$lst_x$表示$x$第一次出现的位置，$f_i$表示$[i=lst_{a_i}]$，如果$a_i$在此之前没有出现过（即$lst_{a_i} = 0$），那么$lst_{a_i}\leftarrow i,f_i\leftarrow \text{true}$。容易得知，答案为：$\sum^{b}_{i=a}f_i$</p>
 <p>问题就会转化为：维护一个数组$f_i$，支持单点修改，区间求和。<br>
 直接用树状数组维护即可。<br>
-但是现在的$b$并不是一成不变的，显然最容易维护的情况是$b$逐次递增，这个时候只有$lst_{i\in (b_{i-1},b_{i}]}$是会改变的，那么我们只需要将询问离线下来，按$b$排序，每次询问把<br>
-$(b_{i-1},b_{i}]$遍历一遍即可。</p>
+但是现在的$b$并不是一成不变的，显然最容易维护的情况是$b$逐次递增，这个时候只有$lst_{i\in (b_{i-1},b_{i}]}$是会改变的，那么我们只需要将询问离线下来，按$b$排序，每次询问把$(b_{i-1},b_{i}]$遍历一遍即可。</p>
 <div class="highlight highlight-source-c++"><pre class="notranslate"><span class="pl-en">sort</span>(qr + <span class="pl-c1">1</span>, qr + q + <span class="pl-c1">1</span>, [](<span class="pl-k">const</span> Q &amp;x, <span class="pl-k">const</span> Q &amp;y) { <span class="pl-k">return</span> x.<span class="pl-smi">b</span> &lt; y.<span class="pl-smi">b</span>; } );
 
 fw.clear(n)
@@ -216,7 +215,7 @@ $s[l,r]$中每个字符的出现次数等于$T$中那个字符的出现次数</l
 		}
 	cout &lt;&lt; (f || fw[<span class="pl-c1">26</span>].<span class="pl-c1">qry</span>(x - <span class="pl-c1">1</span>) != fw[<span class="pl-c1">26</span>].<span class="pl-c1">qry</span>(y - <span class="pl-c1">1</span>) ? <span class="pl-s"><span class="pl-pds">"</span>No<span class="pl-cce">\n</span><span class="pl-pds">"</span></span> : <span class="pl-s"><span class="pl-pds">"</span>Yes<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);
 }</pre></div>
-<h1><a href="https://vjudge.net/contest/702006#problem/F" rel="nofollow">T6</a> Substring of Sorted String</h1>
+<h1><a href="https://vjudge.net/contest/702006#problem/F" rel="nofollow">T6</a> Box in Box</h1>
 <p>箱子可以旋转，考虑像田忌赛马一样将一个箱子的$h,w,d$排序再比较。<br>
 内部排序之后问题就转化为了一个“三维偏序”，按照常规套路是排序降一维, CDQ 降一维，数据结构降一维，但是这道题比较特殊，只判断是否存在而不需要计数，所以我们可以利用这一特殊性质用树状数组维护。<br>
 首先随便按一维排序（比如$h$），然后再将$w$离散化，这样既不影响对$w$比较，而且还可以直接将新的$w_i$作为$d$的下标。那么我们对于每一个枚举到的点$i$，只需要看$\min_{j\in[1,w_i)}d_j$是否小于$d_i$即可，这是一个前缀最小值，可以用树状数组维护。</p>
