@@ -1,14 +1,20 @@
 # Gemini 全面 V.S. DeepSeek R1
+
 ## 1. Coding测试
+
 ### [测试题目](https://www.luogu.com.cn/problem/P12405)
-### Gemini 2.5 Pro:
-```
+
+### Gemini 2.5 Pro
+
+```txt
 提示词：
 1. 原题面+换行+请用C++解决这个问题
 2. 你的时间复杂度是多少
-3. 可是在本题的数据范围之内，$\sigma n$=$n\times T$的时间复杂度是不被允许的。请尝试通过更多的数学推导，得到一个$\sigma m$的做法。 
+3. 可是在本题的数据范围之内，$\sigma n$=$n\times T$的时间复杂度是不被允许的。请尝试通过更多的数学推导，得到一个$\sigma m$的做法。
 ```
+
 第一份回答：
+
 ```cpp
 #include <vector>       // Required for std::vector
 #include <numeric>      // Potentially useful, e.g. std::accumulate, but not used here
@@ -350,8 +356,10 @@ int main() {
     return 0; // Indicate successful execution
 }
 ```
+
 第二份回答：
-```
+
+```md
 好的，我们来分析一下提供代码的时间复杂度。
 
 1.  **预处理组合数** (`precompute_combinations`):
@@ -388,7 +396,9 @@ int main() {
 
 总结：该解决方案的时间复杂度为 $O(\max(n+m) + \sum n)$。
 ```
+
 第三份回答：
+
 ```cpp
 您是对的，原始的 $O(N_{max} + \sum n)$ 复杂度分析中，虽然 $\sum n$ 可能在限制内（例如 $2 \times 10^7$），但如果 $T$ 很大（例如 $5 \times 10^5$）且某些测试用例的 $n$ 较大（例如 $10^5$），那么单次 $O(n)$ 的计算也可能导致超时。寻求一个与 $m$ 相关的复杂度是更优的策略。
 
@@ -664,14 +674,17 @@ int main() {
         writeln(result);
     }
 
-    return 0; 
+    return 0;
 }
 ```
+
 [评测记录1](https://www.luogu.com.cn/record/215862842)  
 [评测记录2](https://www.luogu.com.cn/record/215864090)  
-表现极其优异，仅三条提示符就获得了100pts(第一次35pts)。
+表现极其优异，仅三条提示符就获得了 100pts （第一次 35pts ）。
+
 ### DeepSeek R1
-```
+
+```md
 提示词：
 1. 同Gemini 2.5 Pro
 2. 你的时间复杂度是多少
@@ -679,7 +692,9 @@ int main() {
 4. 你的代码和思路都是错误的。推导没那么复杂，换个思路想一想能不能解一下递推。
 5. 还是错的。提示一下，正确的复杂度是$O(\Sigma m$)的。
 ```
+
 回答1:
+
 ```cpp
 为了解决这个问题，我们需要计算小K施展魔法后的星团闪耀度之和。通过分析，我们发现每次操作会将每个星团分解为较小的星团，并保留原有星团。我们需要高效地计算这些分解操作后的闪耀度之和。
 
@@ -800,7 +815,9 @@ int main() {
 
 通过这种方法，我们能够高效地计算出多次魔法操作后的闪耀度之和，满足题目中的时间和空间复杂度要求。
 ```
+
 回答2：
+
 ```markdown
 对于这个问题，我们需要分析各个部分的时间复杂度：
 
@@ -827,23 +844,90 @@ int main() {
 - **预处理**的 O(4e6) 是一个可接受的常数项，因为 4e6 在现代计算机上可以在毫秒级完成。
 - **每个测试用例**的主要时间消耗在于第三部分的 O(n) 循环。根据题目约束（sum n across test cases ≤ 2e7），这部分的总时间在可接受范围内。
 ```
-第三、四个回答在胡说八道，产生了AI幻觉，不展示。
+
+第三、四个回答在胡说八道，产生了 AI 幻觉，不展示。  
 第五个回答又折返回了起点。
+
 ### 结果
-Gemini 2.5 Pro完胜
+
+Gemini 2.5 Pro 完胜
+
 ## 2. 翻译测试
+
 ### [原文](https://vjudge.net/problem/POJ-2482#author=0)
-Fleeting time does not blur my memory of you. Can it really be 4 years since I first saw you? I still remember, vividly, on the beautiful Zhuhai Campus, 4 years ago, from the moment I saw you smile, as you were walking out of the classroom and turned your head back, with the soft sunset glow shining on your rosy cheek, I knew, I knew that I was already drunk on you. Then, after several months’ observation and prying, your grace and your wisdom, your attitude to life and your aspiration for future were all strongly impressed on my memory. You were the glamorous and sunny girl whom I always dream of to share the rest of my life with. Alas, actually you were far beyond my wildest dreams and I had no idea about how to bridge that gulf between you and me. So I schemed nothing but to wait, to wait for an appropriate opportunity. Till now — the arrival of graduation, I realize I am such an idiot that one should create the opportunity and seize it instead of just waiting.
 
-These days, having parted with friends, roommates and classmates one after another, I still cannot believe the fact that after waving hands, these familiar faces will soon vanish from our life and become no more than a memory. I will move out from school tomorrow. And you are planning to fly far far away, to pursue your future and fulfill your dreams. Perhaps we will not meet each other any more if without fate and luck. So tonight, I was wandering around your dormitory building hoping to meet you there by chance. But contradictorily, your appearance must quicken my heartbeat and my clumsy tongue might be not able to belch out a word. I cannot remember how many times I have passed your dormitory building both in Zhuhai and Guangzhou, and each time aspired to see you appear in the balcony or your silhouette that cast on the window. I cannot remember how many times this idea comes to my mind: call her out to have dinner or at least a conversation. But each time, thinking of your excellence and my commonness, the predominance of timidity over courage drove me leave silently.
+Fleeting time does not blur my memory of you.  
+Can it really be 4 years since I first saw you?  
+I still remember, vividly, on the beautiful Zhuhai Campus,  
+4 years ago, from the moment I saw you smile,  
+as you were walking out of the classroom and turned your head back,  
+with the soft sunset glow shining on your rosy cheek,  
+I knew, I knew that I was already drunk on you.
 
-Graduation, means the end of life in university, the end of these glorious, romantic years. Your lovely smile which is my original incentive to work hard and this unrequited love will be both sealed as a memory in the deep of my heart and my mind. Graduation, also means a start of new life, a footprint on the way to bright prospect. I truly hope you will be happy everyday abroad and everything goes well. Meanwhile, I will try to get out from puerility and become more sophisticated. To pursue my own love and happiness here in reality will be my ideal I never desert.
+Then, after several months’ observation and prying,  
+your grace and your wisdom,  
+your attitude to life,  
+and your aspiration for future,  
+were all strongly impressed on my memory.  
+You were the glamorous and sunny girl  
+whom I always dream of to share the rest of my life with.  
+Alas, actually you were far beyond my wildest dreams,  
+and I had no idea about how to bridge that gulf between you and me.  
+So I schemed nothing but to wait,  
+to wait for an appropriate opportunity.  
+Till now — the arrival of graduation,  
+I realize I am such an idiot  
+that one should create the opportunity and seize it instead of just waiting.
+
+These days,  
+having parted with friends, roommates and classmates one after another,  
+I still cannot believe the fact that after waving hands,  
+these familiar faces will soon vanish from our life,  
+and become no more than a memory.  
+I will move out from school tomorrow,  
+and you are planning to fly far far away,  
+to pursue your future and fulfill your dreams.  
+Perhaps we will not meet each other any more if without fate and luck.  
+So tonight, I was wandering around your dormitory building,  
+hoping to meet you there by chance.  
+But contradictorily,  
+your appearance must quicken my heartbeat,  
+and my clumsy tongue might be not able to belch out a word.  
+I cannot remember how many times I have passed your dormitory building,  
+both in Zhuhai and Guangzhou,  
+and each time aspired to see you appear in the balcony,  
+or your silhouette that cast on the window.  
+I cannot remember how many times this idea comes to my mind:  
+call her out to have dinner or at least a conversation.  
+But each time, thinking of your excellence and my commonness,  
+the predominance of timidity over courage drove me leave silently.
+
+Graduation, means the end of life in university,  
+the end of these glorious, romantic years.  
+Your lovely smile,  
+which is my original incentive to work hard and this unrequited love,  
+will be both sealed as a memory in the deep of my heart and my mind.  
+
+Graduation, also means a start of new life,  
+a footprint on the way to bright prospect.  
+I truly hope you will be happy everyday abroad, and everything goes well.  
+Meanwhile, I will try to get out from puerility and become more sophisticated.  
+To pursue my own love and happiness here in reality will be my ideal I never desert.
 
 Farewell, my princess!
 
-If someday, somewhere, we have a chance to gather, even as gray-haired man and woman, at that time, I hope we can be good friends to share this memory proudly to relight the youthful and joyful emotions. If this chance never comes, I wish I were the stars in the sky and twinkling in your window, to bless you far away, as friends, to accompany you every night, sharing the sweet dreams or going through the nightmares together.
+If someday, somewhere, we have a chance to gather,  
+even as gray-haired man and woman, at that time,  
+I hope we can be good friends to share this memory proudly,  
+to relight the youthful and joyful emotions.  
+If this chance never comes,  
+I wish I were the stars in the sky and twinkling in your window,  
+to bless you far away, as friends,  
+to accompany you every night,  
+sharing the sweet dreams or going through the nightmares together.
 
 ### DeepSeek(Vjudge)
+
 （vjudge分享的译文，我也不知道提示词和版本是什么）:
 
 时光飞逝却未曾模糊你的容颜。初见至今竟已四年了吗？我仍清晰记得，四年前在美丽的珠海校区，当你微笑着走出教室回眸的瞬间，柔和的晚霞映着你绯红的脸颊，那一刻我便知道，自己已为你沉醉。经过数月的暗中观察，你的优雅智慧、人生态度与未来抱负都深深刻在我记忆里。你正是我梦想共度余生的明媚少女。可叹你远超我的痴心妄想，而我不知如何跨越你我之间的鸿沟，只能愚蠢地等待所谓时机。直到毕业来临才恍然醒悟：机会需要创造而非空等。
@@ -856,12 +940,14 @@ If someday, somewhere, we have a chance to gather, even as gray-haired man and w
 
 若有朝一日重逢，哪怕你我皆已白发苍苍，愿能自豪地追忆这段青春；若此生缘尽，我愿化作夜星在你窗前闪烁，以朋友之名每晚相伴，共赴甜梦或同渡梦魇。
 
-### DeepSeek R1:
-```
+### DeepSeek R1
+
+```md
 提示词：
 我找到了一段抒情的、浪漫的英语短文，想把这段文字翻译成中文发在网上，尽量还原它的意境，去除英文句式，让它显得像我的原创：
 （此处略去原文）
 ```
+
 时光匆匆，却从未模糊我对你的记忆。真的已经过去四年了吗？我仍清晰地记得，四年前，在美丽的珠海校区，当你走出教室，回头嫣然一笑的那一刻，柔和的夕阳余晖洒在你红润的脸颊上，我就知道，我已深深为你沉醉。
 
 此后数月，我默默观察、偷偷关注着你。你的优雅与智慧，你对待生活的态度和对未来的憧憬，都深深烙印在我的记忆里。你就是那个我一直梦寐以求、想要相伴一生的阳光女孩。可事实上，你宛如遥不可及的星辰，我不知如何跨越我们之间的鸿沟。于是，我所能做的，唯有等待，等待一个合适的时机。直到如今——毕业之际，我才恍然惊觉自己是如此愚蠢，机会是要靠自己创造和把握的，而非一味等待。
@@ -873,8 +959,10 @@ If someday, somewhere, we have a chance to gather, even as gray-haired man and w
 再见了，我的公主！
 
 如果有一天，在某个地方，我们还有机会重逢，即便那时我们都已白发苍苍，我希望我们能成为好朋友，自豪地分享这段回忆，重新唤起青春与欢乐的情感。倘若此生再无重逢的机会，我愿化作天空中的繁星，在你的窗前闪烁，远远地为你祝福，以朋友的身份，陪伴你每一个夜晚，与你一同分享美梦，或是共同度过噩梦。
-### Gemini 2.5 Pro:
-提示词DeepSeek R1。  
+
+### Gemini 2.5 Pro
+
+提示词同DeepSeek R1。  
 时光荏苒，我对你的记忆却未曾模糊分毫。初见至今，竟已四载？
 
 我仍清晰记得，四年前，美丽的珠海校区。当你走出教室，蓦然回首，嫣然一笑，落日熔金，柔光洒在你微醺的脸颊上。彼时彼刻，我便知晓，早已为你沉醉。之后的数月，默默关注，悄悄打探，你的优雅、你的聪慧、你的人生态度、你对未来的憧憬，一点一滴，都深深刻入我心。你就是那个我梦寐以求、想要与之共度余生的女孩，耀眼而温暖。可惜，你实在太过耀眼，远超我最大胆的奢望，我不知如何才能跨越你我之间的距离。于是，我只懂傻傻等待，等待一个所谓合适的时机。直到毕业钟声敲响，我才恍然，自己何其愚钝！机遇从来都是创造和抓住的，而非苦等。
@@ -886,18 +974,22 @@ If someday, somewhere, we have a chance to gather, even as gray-haired man and w
 再见了，我心中的公主！
 
 若有朝一日，我们有缘再会，哪怕彼时你我已两鬓斑白，我希望，我们能像老友般，坦然地分享这段回忆，让青春的情愫与欢乐再次点燃。若此缘难再续，我愿化作夜空繁星，在你窗边默默闪耀，以友之名，遥遥为你祝福，夜夜伴你左右，分享你的甜梦，分担你的不安。
-### Gemini 2.5 Flash:  
+
+### Gemini 2.5 Flash
+
 使用原提示词写出的译文太过傻叉，不与展示。
-```
+
+```md
 提示词：
-1.翻译这段文字，尽量做到信、达、雅，多用中国地道的成语、短语表达（即使意思有微小偏差）：（此处略去原文）
-2.减少一些连接词
-3.不要用破折号
-4.”笨拙舌头或许张口结舌，甚至语无伦次“语义比较重复
-5.”你的出现必定让我心跳加速语无伦次“怎么样？
-6.减少过于文邹邹的表达，使它更像一篇自然的中国抒情散文而不像外国译文
-7.减少口语化表达
+1. 翻译这段文字，尽量做到信、达、雅，多用中国地道的成语、短语表达（即使意思有微小偏差）：（此处略去原文）
+2. 减少一些连接词
+3. 不要用破折号
+4. ”笨拙舌头或许张口结舌，甚至语无伦次“语义比较重复
+5. ”你的出现必定让我心跳加速语无伦次“怎么样？
+6. 减少过于文邹邹的表达，使它更像一篇自然的中国抒情散文而不像外国译文
+7. 减少口语化表达
 ```
+
 白驹过隙，你在我记忆中的模样从未模糊。弹指四年，初见恍若昨日。清晰记得，那是在美丽的珠海校园。四年前，你走出教室，回眸一笑，夕阳余晖映衬着绯红面颊。那一刻，我便已为你倾心，心为之夺。
 
 随后的数月，我渐渐了解了你。你的风姿，你的聪慧，你的人生态度，对未来的憧憬，都深深印刻在我心底。你便是我魂牵梦萦，愿共度余生的明媚女子。然现实中，你远超我的想象，仿佛天边皓月，我自惭形秽，深感遥不可及。心中别无他法，唯有默默等待，等待一个未知之期。直到毕业季悄然而至，我才幡然醒悟，悔恨自己的迟钝愚钝！机会当需创造把握，岂能坐等蹉跎？
@@ -912,160 +1004,195 @@ If someday, somewhere, we have a chance to gather, even as gray-haired man and w
 
 倘若有朝一日，天涯海角，得以偶遇。纵使两鬓斑白，容颜已老。亦盼能成为故友，得以笑着回首往事，重温那段青春的欣悦。倘若此生无缘再聚，我愿化作夜空之星，闪烁于你的窗前，遥寄祝福。以朋友之名，夜夜相伴，共你分享甜梦，抑或与你共度梦魇。
 
-### 评价：
-使用Gemini 2.5 Pro 和 DeepSeek R1进行评价。  
+### 评价
+
+使用 Gemini 2.5 Pro 和 DeepSeek R1 进行评价。  
 **审美没有标准，AI仅供参考！**
-```
+
+```md
 提示词：
 请分析以下几段短文，哪个最像原创，哪个最像翻译：
 ```
-#### DeepSeek(Vjudge):
+
+#### DeepSeek(Vjudge)
+
 ##### Gemini 2.5 Pro的评价
+
 虽然情感点都提到了，但因为语言过于凝练，情感的铺陈和深度略显不足，不如第一段那么饱满。  
 这种高度凝练、追求书面化的风格，有时会在翻译中出现，尤其是当译者试图用更“雅”的中文词汇去对应原文时，可能会牺牲一些自然的流畅性。虽然写得不错，但与第一段的自然倾诉感相比，略显刻意。
+
 ##### DeepSeek R1的评价
-1. 信息高度压缩：将原文内容压缩60%以上（如删除"从阳台到窗前"的具体场景），呈现译文的精简特征  
-2. 文言化表达突兀："可叹你远超我的痴心妄想"等句式不符合现代中文口语习惯，带有翻译腔的痕迹  
-3. 意象移植痕迹："夜星"、"共赴甜梦"等诗意化表达更接近西方诗歌意象的中译风格  
-4. 逻辑连接词缺失：段落间过渡生硬（如"毕业既是终点，也是起点"直接转折），呈现译文常见的衔接特征  
+
+1. 信息高度压缩：将原文内容压缩60%以上（如删除"从阳台到窗前"的具体场景），呈现译文的精简特征
+2. 文言化表达突兀："可叹你远超我的痴心妄想"等句式不符合现代中文口语习惯，带有翻译腔的痕迹
+3. 意象移植痕迹："夜星"、"共赴甜梦"等诗意化表达更接近西方诗歌意象的中译风格
+4. 逻辑连接词缺失：段落间过渡生硬（如"毕业既是终点，也是起点"直接转折），呈现译文常见的衔接特征
 5. 关键细节模糊化："明媚少女"等抽象称谓替代具体形象描写，符合翻译过程中的信息损耗特征
-#### DeepSeek R1：
+
+#### DeepSeek R1
+
 ##### Gemini 2.5 Pro的评价
+
 1. 语言风格: 语言流畅自然，情感真挚。句子结构长短结合，既有描述性的长句（如第一段末句），也有表达直接情感的短句。用词比较生活化和口语化，但也融入了一些书面语（如“嫣然一笑”、“沉醉”、“烙印”、“梦寐以求”、“遥不可及”、“恍然惊觉”、“无疾而终”等），整体平衡感较好。
 2. 情感表达: 情感的流露和推进显得比较自然、真实，符合一个暗恋者在毕业时的心绪波动，从回忆、倾慕、遗憾、挣扎到最后的祝福和期盼。
 3. 结构与逻辑: 段落之间的衔接顺畅，思路清晰。从回忆初见到暗恋过程，再到毕业离别的感慨和对未来的祝福，逻辑链条完整。
 4. 文化契合度: 表达方式和情感内核比较符合中文语境下的青春感伤和含蓄的爱恋。
+
 ##### DeepSeek R1自评
+
 1. 自然流畅的细节描写：开篇"柔和的夕阳余晖洒在你红润的脸颊上"等场景刻画细腻，符合中文情感表达习惯，时间线铺陈自然（珠海校区的初遇→数月观察→毕业季的顿悟→临别徘徊）
 2. 符合中文语境的叙事节奏：段落间过渡平缓（"直到如今——毕业之际"），情绪层层递进，情感铺垫完整
 3. 生活化的口语表达："笨拙的舌头或许连一个字也说不出来"等表述带有真实情感流露的粗糙感，符合中文日记体特征
 4. 冗余信息保留：保留"与朋友、室友和同学道别"等非核心细节，符合个人随笔的书写特征
-#### Gemini 2.5 Flash:
+
+#### Gemini 2.5 Flash
+
 ##### Gemini 2.5 Pro 的评价
-1. 过度书面化: 极力追求“雅”的表达，有时会用力过猛，丢失了中文口语或现代白话文的自然感，这在翻译时为了追求“信达雅”而偏离自然语感的情况很常见。  
-2. 词语选择: 某些词语的选择和组合（如“迟钝愚钝”、“成熟练达”）在现代汉语的自然表达中略显生硬或不常用，可能是在试图精确对应外语词汇的含义或追求形式对等。  
+
+1. 过度书面化: 极力追求“雅”的表达，有时会用力过猛，丢失了中文口语或现代白话文的自然感，这在翻译时为了追求“信达雅”而偏离自然语感的情况很常见。
+2. 词语选择: 某些词语的选择和组合（如“迟钝愚钝”、“成熟练达”）在现代汉语的自然表达中略显生硬或不常用，可能是在试图精确对应外语词汇的含义或追求形式对等。
 3. 句式: 有些长句的结构，虽然符合语法，但读起来不如第一段那么顺畅，可能受到了源语言（如英语长句结构）的影响。
+
 ##### DeepSeek R1 的评价
+
 存在"天各一方/共度梦魇"等中西混合表达，部分句式（"然现实中，你远超我的想象"）呈现欧化语序。可能是基于外文作品的深度汉化改写，或受翻译作品影响较大的中文创作
-#### Gemini 2.5 Pro：
+
+#### Gemini 2.5 Pro
+
 ##### Gemini 2.5 Pro自评
-* **语言风格与词语选择：** 这段文字在语言上显得相当成熟和精炼。它融合了口语化的自然流畅和书面化的精致表达。例如，“时光荏苒”、“四载”、“蓦然回首”、“落日熔金”、“微醺的脸颊”、“彼时彼刻”、“何其愚钝”、“挥手自兹去”（化用诗句）、“沦为回忆”、“圆梦他乡”、“心如擂鼓，嘴笨舌拙”、“出类拔萃与平平无奇”、“青葱岁月”、“悉心珍藏”、“凝成记忆”、“新生活的序章”、“锦绣前程”、“在此间尘世”、“两鬓斑白”、“青春的情愫”等等。这些词语和表达既有文采，又不显得过分堆砌或生硬（相比短文 3）。成语、书面语和一些诗意化的描述（如“落日熔金”、“窗上投映的那个熟悉剪影”）运用得比较自然。
+
+* **语言风格与词语选择：** 这段文字在语言上显得相当成熟和精炼。它融合了口语化的自然流畅和书面化的精致表达。例如，“时光荏苒”、“四载”、“蓦然回首”、“落日熔金”……
+这些词语和表达既有文采，又不显得过分堆砌或生硬（相比短文 3）。成语、书面语和一些诗意化的描述（如“落日熔金”、“窗上投映的那个熟悉剪影”）运用得比较自然。
 * **句子结构与节奏：** 句子长短结合，节奏感好。既有短句表达清晰的情感和动作（如“早已为你沉醉”），也有长句进行细致的描绘和心理刻画。段落之间的过渡也相当流畅。
 * **情感表达：** 情感的层次感和强度都表达得很好。“何其愚钝！”、“勇气便被怯懦吞噬”、“悉心珍藏，封存于心底，凝成记忆”、“分担你的不安”等处的表达，显得情感更为深刻和细腻。
 * **“翻译感”评估：** 这段文字**非常不像翻译**，反而**极具原创性**，甚至可以说是前面几段中写得最精到、最富文学性的一段。理由如下：
-    1.  **语感自然：** 通篇读下来非常符合现代汉语的语感，流畅自然，没有翻译腔中常见的欧式句法或生硬的词语搭配。
-    2.  **词语运用娴熟：** 对中文词汇（包括成语、书面语、诗化语言）的运用显得非常娴熟和贴切，能够准确传达细微的情感和意境，这不是翻译时能轻易达到的。例如“微醺的脸颊”比“红润的脸颊”更添一丝意境，“落日熔金”的意象化表达，“悉心珍藏，凝成记忆”的递进感，“分担你的不安”比“度过噩梦”更显温情和关怀。
-    3.  **文化契合度高：** 无论是化用诗句（“挥手自兹去”），还是表达方式（如祝福语“日日欢愉，万事顺遂”），都非常贴合中文文化背景。
+  1. **语感自然：** 通篇读下来非常符合现代汉语的语感，流畅自然，没有翻译腔中常见的欧式句法或生硬的词语搭配。
+  2. **词语运用娴熟：** 对中文词汇（包括成语、书面语、诗化语言）的运用显得非常娴熟和贴切，能够准确传达细微的情感和意境，这不是翻译时能轻易达到的。例如“微醺的脸颊”比“红润的脸颊”更添一丝意境，“落日熔金”的意象化表达，“悉心珍藏，凝成记忆”的递进感，“分担你的不安”比“度过噩梦”更显温情和关怀。
+  3. **文化契合度高：** 无论是化用诗句（“挥手自兹去”），还是表达方式（如祝福语“日日欢愉，万事顺遂”），都非常贴合中文文化背景。
 
 **结论：**
 
 这段文字**最像是原创**，并且是文学性和表达技巧上相当出色的一篇原创。它成功地在文学性和自然流畅之间找到了很好的平衡点。
+
 ##### DeepSeek R1的评价
 
-**最像原创的文本：Gemini 2.5 Pro**
+###### 最像原创的文本：Gemini 2.5 Pro
 
 判断依据：
+
 1. **语言张力与韵律感**：文中"落日熔金"化用李清照词句，"若此缘难再续"等文言句式的自然运用，显示出作者深厚的汉语语感。
 2. **情感递进的层次性**：从"默默关注"到"心头涌起"再到"勇气被怯懦吞噬"，心理描写呈现螺旋式推进，符合中文情感表达的含蓄特质。
 3. **标点符号的个性化使用**：问号断句（"竟已四载？"）、破折号强调等手法，展现中文特有的节奏把控能力。
 4. **意象组合的独创性**："窗上投映的剪影"与"繁星"意象形成虚实对照，体现汉语诗歌的意境营造传统。
 
-**最像翻译的文本：DeepSeek(Vjudge)**
+###### 最像翻译的文本：DeepSeek(Vjudge)
 
 判断依据：
+
 1. **信息压缩特征**：将原文"宿舍楼附近徘徊，期待能与你偶然相遇"浓缩为"宿舍楼下期待偶遇"，呈现典型的翻译文本精简特征。
 2. **逻辑显性标记**：使用"既是...也是..."这类显性逻辑连接词，反映印欧语系的逻辑外化特点。
 3. **情感表达的直白化**："因自惭形秽而怯懦离去"直接揭示心理动机，不同于中文含蓄留白的表达传统。
 4. **文化意象的缺失**：缺乏"夜星"等中文特有的时间意象，呈现去文化特征的通用化表达。
 
 **各文本特征对比分析表**：
-| 分析维度       | DeepSeek R1（基准文本） | DeepSeek(Vjudge)（翻译特征） | Gemini 2.5 Flash（文白夹杂） | Gemini 2.5 Pro（原创特征） |
-|----------------|-------------------|-------------------|-------------------|-------------------|
-| 平均句长       | 28字              | 22字              | 32字              | 30字              |
-| 四字成语密度   | 12%               | 8%                | 18%               | 15%               |
-| 文言虚词使用   | 偶尔（"之"）      | 无                | 高频（"然""抑"）  | 适度（"彼""兹"）  |
-| 心理描写方式   | 直接叙述          | 结论式陈述        | 文白夹杂          | 意象映射          |
-| 文化意象密度   | 2处/百字          | 0.5处/百字        | 3处/百字          | 4处/百字          |
-| 修辞手法       | 明喻为主          | 无                | 排比              | 隐喻+通感         |
-| 2416的人       | 李墨铠            | 谭博荣等菜逼      | 肖涵睿            | 无                |
 
+| 维度         | DeepSeek R1 | DeepSeek(Vjudge) | Gemini Flash | Gemini Pro |
+| ------------ | ----------- | ---------------- | ------------ | ---------- |
+| 大致评价     | 基准文本    |                  | 文白夹杂     | 原创特征   |
+| 平均句长     | 28字        | 22字             | 32字         | 30字       |
+| 四字成语密度 | 12%         | 8%               | 18%          | 15%        |
+| 文言虚词使用 | 偶尔        | 无               | 高频         | 适度       |
+| 心理描写方式 | 直接叙述    | 结论式陈述       | 文白夹杂     | 意象映射   |
+| 文化意象密度 | 2处/百字    | 0.5处/百字       | 3处/百字     | 4处/百字   |
+| 修辞手法     | 明喻为主    | 无               | 排比         | 隐喻+通感  |
+| 2416的人     | 李墨铠      | 谭博荣等菜逼     | 肖涵睿       | 无         |
 
 **深层语言特征解析**：
+
 1. **及物性系统差异**：原创文本（第4段）多采用心理过程动词（"渴望""念及"），而翻译倾向文本（第2段）多用物质过程动词（"创造""把握"），反映思维方式的差异。
 2. **主位推进模式**：第4段采用平行主位推进（"你...我..."交替），符合中文话题优先特点；第2段使用线性主位推进，体现英语主语优先特征。
 3. **时间建构方式**：原创文本使用模糊时间表达（"彼时彼刻""若有朝一日"），翻译文本倾向精确时间标记（"经过数月""直到毕业来临"）。
 
 **结论**：
 Gemini 2.5 Pro展现出汉语文学创作特有的"立象尽意"传统，通过意象群构建和文言资源的现代转化，形成独特的审美空间。而DeepSeek(Vjudge)在信息密度、逻辑显化及文化过滤等方面，显示出明显的翻译文本特征，符合"信达雅"翻译原则中的"达"层面优化特征。这种差异本质上是汉语意合性与印欧语系形合性在文本生成层面的不同体现。
-
-[$\color{white}{后续}$]()
+$\color{white}{后续}$
 [](https://vjudge.net/problem/OpenJ_POJ-C15J#author=GPT_zh)
+
 ### 结果
+
 Gemini 2.5 Pro 险胜
 
 ## 3. 数学压轴
+
 题目：  
 在平面直角坐标系中，抛物线$y=\frac{x^2}{4}+bx+c$与x轴交于点A, B, 与y轴交于点C，其中B(3,0),C(0,-3)。  
 (1)求该抛物线的表达式  
-(2)点P是抛物线上一点(-2,-2.5)，将该抛物线向右平移5个单位，点E为点P的对应点，平移后的抛物线与y轴交于点F，Q为平移后的抛物线的对称轴上任意一点，请求出所有使得三角形QEF是以QF为腰的等腰三角形的点Q的坐标。  
+点P是抛物线上一点(-2,-2.5)，将该抛物线向右平移5个单位，点E为点P的对应点，  
+平移后的抛物线与y轴交于点F，Q为平移后的抛物线的对称轴上任意一点，  
+请求出所有使得三角形QEF是以QF为腰的等腰三角形的点Q的坐标。  
 注意用中国中考标准书写过程。
+
 ### Gemini 2.5 Pro
+
 解：
 (1) 因为抛物线$y=\frac{1}{4}x^2+bx+c$经过点B(3,0)和点C(0,-3)，
 所以将点B和点C的坐标代入抛物线表达式，得方程组：
-$$\begin{cases} \frac{1}{4}(3)^2 + b(3) + c = 0 \\ \frac{1}{4}(0)^2 + b(0) + c = -3 \end{cases}$$
+$$\begin{cases}\frac{1}{4}(3)^2+b(3)+c=0 \\ \frac{1}{4}(0)^2+b(0)+c=-3\end{cases}$$
 化简得：
-$$\begin{cases} \frac{9}{4} + 3b + c = 0 \quad ① \\ c = -3 \quad ② \end{cases}$$
+$$\begin{cases}\frac{9}{4}+3b+c=0 \quad ① \\ c = -3 \quad ② \end{cases}$$
 将②代入①得：
-$$\frac{9}{4} + 3b - 3 = 0$$
-$$3b = 3 - \frac{9}{4}$$
-$$3b = \frac{12}{4} - \frac{9}{4}$$
-$$3b = \frac{3}{4}$$
-$$b = \frac{1}{4}$$
+$$\frac{9}{4}+3b-3 = 0$$
+$$3b=3-\frac{9}{4}$$
+$$3b=\frac{12}{4}-\frac{9}{4}$$
+$$3b=\frac{3}{4}$$
+$$b=\frac{1}{4}$$
 所以，该抛物线的表达式为：
-$$y = \frac{1}{4}x^2 + \frac{1}{4}x - 3$$
+$$y=\frac{1}{4}x^2+\frac{1}{4}x-3$$
 
-(2) 原抛物线 $y_1 = \frac{1}{4}x^2 + \frac{1}{4}x - 3$。
+(2) 原抛物线 $y_1=\frac{1}{4}x^2+\frac{1}{4}x-3$。
 点P的坐标为(-2, -2.5)。  
 将原抛物线向右平移5个单位，得到新的抛物线 $y_2$。  
 平移的规则是 $x$ 替换为 $x-5$，所以新抛物线的表达式为：  
-$$y_2 = \frac{1}{4}(x-5)^2 + \frac{1}{4}(x-5) - 3$$
-$$y_2 = \frac{1}{4}(x^2 - 10x + 25) + \frac{1}{4}x - \frac{5}{4} - 3$$
-$$y_2 = \frac{1}{4}x^2 - \frac{10}{4}x + \frac{25}{4} + \frac{1}{4}x - \frac{5}{4} - \frac{12}{4}$$
-$$y_2 = \frac{1}{4}x^2 - \frac{9}{4}x + \frac{8}{4}$$
-$$y_2 = \frac{1}{4}x^2 - \frac{9}{4}x + 2$$
+$$y_2=\frac{1}{4}(x-5)^2+\frac{1}{4}(x-5)-3$$
+$$y_2=\frac{1}{4}(x^2-10x+25)+\frac{1}{4}x-\frac{5}{4}-3$$
+$$y_2=\frac{1}{4}x^2-\frac{10}{4}x+\frac{25}{4}+\frac{1}{4}x-\frac{5}{4}-\frac{12}{4}$$
+$$y_2=\frac{1}{4}x^2-\frac{9}{4}x+\frac{8}{4}$$
+$$y_2=\frac{1}{4}x^2-\frac{9}{4}x+2$$
 点E是点P(-2, -2.5)向右平移5个单位后的对应点，所以点E的坐标为 $(-2+5, -2.5) = (3, -2.5)$。  
-点F是平移后的抛物线 $y_2$ 与y轴的交点。令 $x=0$，得 $y_2 = \frac{1}{4}(0)^2 - \frac{9}{4}(0) + 2 = 2$。  
+点F是平移后的抛物线 $y_2$ 与y轴的交点。令 $x=0$，得
+$$y_2=\frac{1}{4}(0)^2-\frac{9}{4}(0)+2=2$$  
 所以点F的坐标为 (0, 2)。  
-平移后的抛物线 $y_2 = \frac{1}{4}x^2 - \frac{9}{4}x + 2$ 的对称轴为直线：  
-$$x = -\frac{b}{2a} = -\frac{-9/4}{2(1/4)} = -\frac{-9/4}{1/2} = \frac{9}{4} \times 2 = \frac{9}{2} = 4.5$$  
+平移后的抛物线 $y_2=\frac{1}{4}x^2-\frac{9}{4}x+2$ 的对称轴为直线：  
+$$
+x=-\frac{b}{2a}=-\frac{-9/4}{2(1/4)}=-\frac{-9/4}{1/2}=\frac{9}{4}\times 2=\frac{9}{2}=4.5
+$$  
 点Q在对称轴 $x=4.5$ 上，设点Q的坐标为 $(4.5, y_Q)$。  
 我们需要找到使得 $\triangle QEF$ 是以QF为腰的等腰三角形的点Q。这意味着 $QF=QE$ 或 $QF=EF$。  
 
 情况一：$QF = QE$  
 根据两点间距离公式，可得：  
-$QF^2 = (4.5 - 0)^2 + (y_Q - 2)^2 = (4.5)^2 + (y_Q - 2)^2 = 20.25 + (y_Q - 2)^2$  
-$QE^2 = (4.5 - 3)^2 + (y_Q - (-2.5))^2 = (1.5)^2 + (y_Q + 2.5)^2 = 2.25 + (y_Q + 2.5)^2$  
-令 $QF^2 = QE^2$：  
-$20.25 + (y_Q - 2)^2 = 2.25 + (y_Q + 2.5)^2$  
-$20.25 + y_Q^2 - 4y_Q + 4 = 2.25 + y_Q^2 + 5y_Q + 6.25$  
-$24.25 + y_Q^2 - 4y_Q = 8.5 + y_Q^2 + 5y_Q$  
-$24.25 - 8.5 = 5y_Q + 4y_Q$  
-$15.75 = 9y_Q$  
-$y_Q = \frac{15.75}{9} = \frac{1575}{900} = \frac{63 \times 25}{36 \times 25} = \frac{63}{36} = \frac{7}{4} = 1.75$  
-所以，此时点Q的坐标为 $(4.5, 1.75)$。
+$QF^2=(4.5-0)^2+(y_Q-2)^2=(4.5)^2+(y_Q-2)^2=20.25+(y_Q-2)^2$  
+$QE^2=(4.5-3)^2+(y_Q-(-2.5))^2=(1.5)^2+(y_Q+2.5)^2=2.25+(y_Q+2.5)^2$  
+令 $QF^2=QE^2$：  
+$20.25+(y_Q-2)^2=2.25+(y_Q+2.5)^2$  
+$20.25+y_Q^2-4y_Q+4=2.25+y_Q^2+5y_Q+6.25$  
+$24.25+y_Q^2-4y_Q=8.5+y_Q^2+5y_Q$  
+$24.25-8.5=5y_Q+4y_Q$  
+$15.75=9y_Q$  
+$y_Q=\frac{15.75}{9}=1.75$  
+所以，此时点Q的坐标为 $(4.5,1.75)$。
 
-情况二：$QF = EF$  
+情况二：$QF=EF$  
 先计算EF的长度平方：  
-$EF^2 = (3 - 0)^2 + (-2.5 - 2)^2 = 3^2 + (-4.5)^2 = 9 + 20.25 = 29.25$  
-$QF^2 = (4.5 - 0)^2 + (y_Q - 2)^2 = 20.25 + (y_Q - 2)^2$  
-令 $QF^2 = EF^2$：  
-$20.25 + (y_Q - 2)^2 = 29.25$  
-$(y_Q - 2)^2 = 29.25 - 20.25$  
-$(y_Q - 2)^2 = 9$  
-$y_Q - 2 = 3$ 或 $y_Q - 2 = -3$  
-$y_Q = 5$ 或 $y_Q = -1$  
-所以，此时点Q的坐标为 $(4.5, 5)$ 或 $(4.5, -1)$。  
+$EF^2=(3-0)^2+(-2.5-2)^2=3^2+(-4.5)^2=9+20.25=29.25$  
+$QF^2=(4.5-0)^2+(y_Q-2)^2=20.25+(y_Q-2)^2$  
+令 $QF^2=EF^2$：  
+$20.25+(y_Q-2)^2=29.25$  
+$(y_Q-2)^2=29.25-20.25$  
+$(y_Q-2)^2=9$  
+$y_Q-2=3$ 或 $y_Q-2=-3$  
+$y_Q=5$ 或 $y_Q=-1$  
+所以，此时点Q的坐标为 $(4.5,5)$ 或 $(4.5,-1)$。  
 
 综上所述，所有使得三角形QEF是以QF为腰的等腰三角形的点Q的坐标为 $(4.5, 1.75)$，$(4.5, 5)$，$(4.5, -1)$。
 
@@ -1074,73 +1201,86 @@ $y_Q = 5$ 或 $y_Q = -1$
 (2) 所有使得三角形QEF是以QF为腰的等腰三角形的点Q的坐标为 $(4.5, 1.75)$，$(4.5, 5)$，$(4.5, -1)$。
 
 ### DeepSeek R1
-(1) 已知抛物线 $ y = \frac{x^2}{4} + bx + c $ 过点 B(3, 0) 和 C(0, -3)。代入点 C 得 \( c = -3 \)。代入点 B 得：
+
+(1)已知抛物线 $y=\frac{x^2}{4}+bx+c$ 过点 B(3,0) 和 C(0,-3) 。代入点C得 $c=-3$ 。代入点B得：
 
 $$
-0 = \frac{3^2}{4} + 3b - 3
+0=\frac{3^2}{4}+3b-3
 $$
 
-解得 $ b = \frac{1}{4} $。抛物线的表达式为：
+解得 $b=\frac{1}{4}$。抛物线的表达式为：
 
 $$
-y = \frac{1}{4}x^2 + \frac{1}{4}x - 3
+y=\frac{1}{4}x^2+\frac{1}{4}x-3
 $$
 
 (2) 抛物线向右平移5个单位后的方程为：
 
 $$
-y = \frac{(x-5)^2}{4} + \frac{1}{4}(x-5) - 3
+y=\frac{(x-5)^2}{4}+\frac{1}{4}(x-5)-3
 $$
 
 化简得：
 
 $$
-y = \frac{1}{4}x^2 - \frac{9}{4}x + 2
+y=\frac{1}{4}x^2-\frac{9}{4}x+2
 $$
 
-对称轴为 $ x = \frac{9}{2} $。点 P(-2, -2.5) 平移后的对应点 E 为 (3, -2.5)，平移后的抛物线与 y 轴交点 F 为 (0, 2)。
+对称轴为 $x=\frac{9}{2}$。点 P(-2,-2.5) 平移后的对应点 E 为 (3, -2.5)，平移后的抛物线与 y 轴交点 F 为 (0, 2)。
 
 考虑三角形 QEF 是以 QF 为腰的等腰三角形：
 
-1. **QF = QE**：点 Q 的坐标为 $ \left( \frac{9}{2}, y \right) $，解得：
+1.**QF = QE**：点 Q 的坐标为 $\left(\frac{9}{2},y\right)$，解得：
 
 $$
-\sqrt{\left( \frac{9}{2} - 0 \right)^2 + (y - 2)^2} = \sqrt{\left( \frac{9}{2} - 3 \right)^2 + (y + 2.5)^2}
+\sqrt{\left(\frac{9}{2}-0\right)^2+(y-2)^2}=\sqrt{\left(\frac{9}{2}-3\right)^2+(y+2.5)^2}
 $$
 
-解得 $ y = \frac{7}{4} $，点 Q 为 $ \left( \frac{9}{2}, \frac{7}{4} \right) $。
+解得 $y=\frac{7}{4}$，点 Q 为 $\left(\frac{9}{2},\frac{7}{4}\right)$。
 
-2. **QF = EF**：EF 的距离为 $ \sqrt{29.25} $，解得：
+2.**QF = EF**：EF 的距离为 $\sqrt{29.25}$，解得：
 $$
-\sqrt{\left( \frac{9}{2} - 0 \right)^2 + (y - 2)^2} = \sqrt{29.25}
+\sqrt{\left(\frac{9}{2}-0\right)^2 +(y-2)^2}=\sqrt{29.25}
 $$
-解得 $y = 5 $ 或 $ y = -1 $，点 Q 分别为 $ \left( \frac{9}{2}, 5 \right) $ 和 $ \left( \frac{9}{2}, -1 \right) $。
+解得 $y=5$ 或 $y=-1$，点 Q 分别为 $\left(\frac{9}{2},5\right)$ 和 $\left(\frac{9}{2},-1\right)$。
 
 最终答案：
 
 (1) $\boxed{y=\dfrac{1}{4}x^2 + \dfrac{1}{4}x - 3}$
 
-(2) 点Q的坐标为$\boxed{\left( \dfrac{9}{2}, \dfrac{7}{4} \right)}、\boxed{\left( \dfrac{9}{2}, 5 \right)}和\boxed{\left( \dfrac{9}{2}, -1 \right)}$
+(2) 点Q的坐标为
+$\boxed{\left(\dfrac{9}{2},\dfrac{7}{4}\right)}$、
+$\boxed{\left(\dfrac{9}{2},5\right)}$和
+$\boxed{\left(\dfrac{9}{2},-1\right)}$
+
 ### 得分结果
+
 由于二人机在解一元二次方程时的结果没有写成
 $$
-y_1 = -1, y_2 = 5
+y_1=-1,y_2=5
 $$
-的形式，各扣一分。  DeepSeek R1中， EF的距离掉了一个大馅饼，扣一分。  
+的形式，各扣一分。  DeepSeek R1 中， EF 的距离掉了一个大馅饼，扣一分。  
 Gemini 2.5 Pro 9分，DeepSeek R1 8分。  
-DeepSeek R1 在思考过程中的检查程序极为冗长，而且毫无必要，过程缺乏逻辑性、严谨性，体现出了它虽然可以生成较长思考链，但是心思并不缜密，逻辑极为紊乱的特点。  
+DeepSeek R1 在思考过程中的检查程序极为冗长，而且毫无必要，
+过程缺乏逻辑性、严谨性，体现出了它虽然可以生成较长思考链，但是心思并不缜密，逻辑极为紊乱的特点。  
 Gemini 2.5 Pro 险胜
+
 ## 历史常识
+
 问题：窝阔台汗国的建立者的爷爷是谁？
+
 ### Gemini 2.5 Pro
-```
+
+```md
 窝阔台汗国（Ögedei Khanate）的核心领土最初是由**窝阔台**（Ögedei Khan）继承的，他是成吉思汗的第三子。
 窝阔台的父亲是**成吉思汗**（Genghis Khan）。
 成吉思汗的父亲是**也速该**（Yesügei）。
 所以，窝阔台汗国的建立者（窝阔台）的爷爷是**也速该**。
 ```
+
 ### DeepSeek R1
-```
+
+```md
 窝阔台汗国的建立者是**海都**，而海都的爷爷是**窝阔台**。具体关系如下：
 
 1. **窝阔台汗国的建立者**：海都（1235年－1301年），他是窝阔台之孙，合失之子。
@@ -1156,7 +1296,13 @@ Gemini 2.5 Pro 险胜
 
 因此，**窝阔台汗国建立者（海都）的爷爷是窝阔台**。若问题意在追溯更早的祖先，则需明确代际关系。
 ```
+
 ### 结果
-正确答案是DeepSeek R1的答案, Gemini 2.5 Pro 在搜索的过程中将“建立者”与“领土继承者”混淆，完败。这体现出了它信息提取能力、总结能力薄弱的特点。
+
+正确答案是DeepSeek R1的答案, Gemini 在搜索的过程中将“建立者”与“领土继承者”混淆，体现出了它信息提取能力、总结能力薄弱的特点。
+
 ## 最终结论
-个人认为Gemini最新模型创作、运用、赏析、推理能力(尤其是长逻辑链上）极强，但信息提取、上下文猜测等基本能力欠佳，DeepSeek R1 在两者中较为平衡，ChatGPT反之。DeepSeek R1 比较符合中国人的习惯，容易调教。Gemini本身极其强大，但是西方开发，prompt较长，难以调教。
+
+个人认为 Gemini 2.5 Pro 创作、运用、赏析、推理能力(尤其是长逻辑链上）极强，但信息提取、上下文猜测等基本能力欠佳；
+DeepSeek R1 在两者中较为平衡， ChatGPT 反之。 DeepSeek R1 比较符合中国人的习惯，容易调教。
+Gemini 本身极其强大，但是西方开发， prompt 较长，难以调教。
