@@ -1,5 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>BaoSiZe's blog page</title><link>https://BaoSiZe-bot.github.io</link><description>The home of an unnamed fish</description><copyright>BaoSiZe's blog page</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.luogu.com.cn/upload/usericon/576768.png</url><title>avatar</title><link>https://BaoSiZe-bot.github.io</link></image><lastBuildDate>Thu, 27 Mar 2025 13:42:36 +0000</lastBuildDate><managingEditor>BaoSiZe's blog page</managingEditor><ttl>60</ttl><webMaster>BaoSiZe's blog page</webMaster><item><title>3.23 总结</title><link>https://BaoSiZe-bot.github.io/post/6.html</link><description># 3.23 总结
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>BaoSiZe's blog page</title><link>https://BaoSiZe-bot.github.io</link><description>The home of an unnamed fish</description><copyright>BaoSiZe's blog page</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.luogu.com.cn/upload/usericon/576768.png</url><title>avatar</title><link>https://BaoSiZe-bot.github.io</link></image><lastBuildDate>Sun, 04 May 2025 03:35:41 +0000</lastBuildDate><managingEditor>BaoSiZe's blog page</managingEditor><ttl>60</ttl><webMaster>BaoSiZe's blog page</webMaster><item><title>谷歌Gemini和DeepSeek R1的全面较量</title><link>https://BaoSiZe-bot.github.io/post/7.html</link><description># Gemini 全面 V.S. DeepSeek R1
+## 1. Coding测试
+### [测试题目](https://www.luogu.com.cn/problem/P12405)
+### Gemini 2.5 Pro:
+```
+提示词：
+1. 原题面+换行+请用C++解决这个问题
+2. 你的时间复杂度是多少
+3. 可是在本题的数据范围之内，$\sigma n$=$n\times T$的时间复杂度是不被允许的。</description><guid isPermaLink="true">https://BaoSiZe-bot.github.io/post/7.html</guid><pubDate>Sun, 04 May 2025 03:32:52 +0000</pubDate></item><item><title>3.23 总结</title><link>https://BaoSiZe-bot.github.io/post/6.html</link><description># 3.23 总结
 
 ## [T1](https://vjudge.net/contest/699955#problem/A) Vacation Query
 
