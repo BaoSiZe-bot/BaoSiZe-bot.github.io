@@ -264,13 +264,13 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-k">long</span> <span class="pl-k">long</span> <span class="pl-en">power</span>(<span class="pl-k">long</span> <span class="pl-k">long</span> base, <span class="pl-k">long</span> <span class="pl-k">long</span> exp) {
     <span class="pl-k">long</span> <span class="pl-k">long</span> res = <span class="pl-c1">1</span>; <span class="pl-c"><span class="pl-c">//</span> Initialize result</span>
     base %= MOD; <span class="pl-c"><span class="pl-c">//</span> Reduce base modulo MOD</span>
-    <span class="pl-k">while</span> (<span class="pl-c1">exp</span> &gt; <span class="pl-c1">0</span>) {
+    <span class="pl-k">while</span> (exp &gt; <span class="pl-c1">0</span>) {
         <span class="pl-c"><span class="pl-c">//</span> If exponent is odd, multiply result by base</span>
-        <span class="pl-k">if</span> (<span class="pl-c1">exp</span> % <span class="pl-c1">2</span> == <span class="pl-c1">1</span>) res = (res * base) % MOD; 
+        <span class="pl-k">if</span> (exp % <span class="pl-c1">2</span> == <span class="pl-c1">1</span>) res = (res * base) % MOD; 
         <span class="pl-c"><span class="pl-c">//</span> Square the base</span>
         base = (base * base) % MOD; 
         <span class="pl-c"><span class="pl-c">//</span> Halve the exponent</span>
-        <span class="pl-c1">exp</span> /= <span class="pl-c1">2</span>; 
+        exp /= <span class="pl-c1">2</span>; 
     }
     <span class="pl-k">return</span> res;
 }
@@ -640,10 +640,10 @@ $W_m = C^m k^n - C \sum_{i=<span class="pl-c1">1</span>}^m C^{m-i} \binom{n+i-<s
     <span class="pl-k">long</span> <span class="pl-k">long</span> res = <span class="pl-c1">1</span>;
     base %= MOD;
     <span class="pl-k">if</span> (base &lt; <span class="pl-c1">0</span>) base += MOD; <span class="pl-c"><span class="pl-c">//</span> Ensure base is non-negative</span>
-    <span class="pl-k">while</span> (<span class="pl-c1">exp</span> &gt; <span class="pl-c1">0</span>) {
-        <span class="pl-k">if</span> (<span class="pl-c1">exp</span> % <span class="pl-c1">2</span> == <span class="pl-c1">1</span>) res = (res * base) % MOD; 
+    <span class="pl-k">while</span> (exp &gt; <span class="pl-c1">0</span>) {
+        <span class="pl-k">if</span> (exp % <span class="pl-c1">2</span> == <span class="pl-c1">1</span>) res = (res * base) % MOD; 
         base = (base * base) % MOD; 
-        <span class="pl-c1">exp</span> /= <span class="pl-c1">2</span>; 
+        exp /= <span class="pl-c1">2</span>; 
     }
     <span class="pl-k">return</span> res;
 }
