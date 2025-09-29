@@ -1,4 +1,4 @@
-| Country            | Democracy Index | HDI              | GDP per Capita($) | PPP per Capita(Intl. $) | Fertility Rate(%) | Employment Rate of College Graduates(%) | Youth Unemployment Rate(%) | Overall Unemployment Rate(%) |
+| Country            | Democracy Index | HDI              | GDP per Capita($) | PPP per Capita(Intl. $) | Fertility Rate | Employment Rate of College Graduates(%) | Youth Unemployment Rate(%) | Overall Unemployment Rate(%) |
 | ------------------ | --------------- | ---------------- | ----------------- | ----------------------- | ----------------- | --------------------------------------- | -------------------------- | ---------------------------- |
 | Denmark            | 9.28            | 0.962            | 74,969            | 74,969                  | 1.70              | 69.6                                    | 12.12                      | 2.9                          |
 | Ireland            | 9.19            | 0.949            | 106,000           | 134,000                 | 1.75              | 81.9                                    | 11.40                      | 4.1                          |
