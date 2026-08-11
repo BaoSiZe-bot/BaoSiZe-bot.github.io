@@ -10,13 +10,13 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="# Solution $10^{th} Aug. 2026AD$
+<meta name="description" content="# Solution 10th Aug. 2026AD
 
 ## [AT_abc267_g](https://www.luogu.com.cn/problem/AT_abc267_g)
 
 >正の整数列 $A=(a_1,a_2,\ldots,a_n)$ が与えられたとき、次の条件を満たす順列 $P=(p_1,p_2,\ldots,p_n)$ の数を求めよ。">
 <meta property="og:title" content="8.10联考题解">
-<meta property="og:description" content="# Solution $10^{th} Aug. 2026AD$
+<meta property="og:description" content="# Solution 10th Aug. 2026AD
 
 ## [AT_abc267_g](https://www.luogu.com.cn/problem/AT_abc267_g)
 
@@ -91,8 +91,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h1>Solution $10^{th} Aug. 2026AD$
-</h1>
+<div class="markdown-body" id="postBody"><h1>Solution 10th Aug. 2026AD</h1>
 <h2><a href="https://www.luogu.com.cn/problem/AT_abc267_g" rel="nofollow">AT_abc267_g</a></h2>
 <blockquote>
 <p>正の整数列 $A=(a_1,a_2,\ldots,a_n)$ が与えられたとき、次の条件を満たす順列 $P=(p_1,p_2,\ldots,p_n)$ の数を求めよ。</p>
@@ -115,7 +114,7 @@ $a_{p_i} \lt a_{p_{i+1}}$ となる整数 $i(1\leqslant i\leqslant n-1)$ がち�
 </ul>
 <p>一种是产生了新的上坡，即由 $f_{i-1,j-1}$ 转移而来，则不能产生的情况共有 $s_{i}+(j-1)+1=s_{i}+j$ 种，产生的情况即 $i-s_{i}-j$ 种。<br>
 所以得到转移方程：<br>
-$$f_{i,j}\gets (i-s_{i}-j)f_{i-1,j-1}+(s_{i}+j+1)f_{i=1,j}$$<br>
+$$f_{i,j}\gets (i-s_{i}-j)f_{i-1,j-1}+(s_{i}+j+1)f_{i-1,j}$$<br>
 代码：</p>
 <div class="highlight highlight-source-c++"><pre class="notranslate">#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>algorithm<span class="pl-pds">&gt;</span></span>
 #<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>cstdio<span class="pl-pds">&gt;</span></span>
@@ -173,32 +172,32 @@ f_{i-1,i-1,d,q} \mathrel{+}= f_{i,x,c,p}<br>
 $$<br>
 于是可以表示成<br>
 $$<br>
-f_{i-1,i-1,d,q} \mathrel{+}= \sum^{n}<em>{x=i}([q=2]\sum^{d-1}</em>{c='a'}f_{i,x,c,0/1}+[q=1]\sum^{'z'}<em>{c=d+1}f</em>{i,x,c,0/1})<br>
+f_{i-1,i-1,d,q} \mathrel{+}= \sum^{n}<em>{x=i}([q=1]\sum^{d-1}</em>{c=\text{'a'}}f_{i,x,c,0/1}+[q=0]\sum^{\text{'z'}}<em>{c=d+1}f</em>{i,x,c,0/1})<br>
 $$<br>
 此时再考虑合法性。<br>
 如果 $A \gt B$, 那么当 $i=A$ 时，落在 $[A, B-1]$ 内的 $x$ 如果同时 $q=0$ 就需要清零；<br>
-如果 $A \lt B$, 那么当 $i=B$ 使，落在 $[B, A-1]$ 内的 $x$ 如果同时 $q=1$ 就需要清零；<br>
+如果 $A \lt B$, 那么当 $i=B$ 时，落在 $[B, A-1]$ 内的 $x$ 如果同时 $q=1$ 就需要清零；<br>
 于是我们得到了一个状态数 $O(26n^2)$ 的做法。</p>
 <h3>进行优化</h3>
-<p>首先考虑空间上，我们求的答案并不关心更糟的状态，所以直接在原数组上修改，压掉一维，状态变为$f_{x,c,p}$<br>
+<p>首先考虑空间上，我们求的答案并不关心更早的状态，所以直接在原数组上修改，压掉一维，状态变为$f_{x,c,p}$<br>
 再考虑时间上，首先求和符号之间互不关联，可以互换。然后对状态的下标进行调整<br>
 $$<br>
 f_{d,q,i-1} \mathrel{+}=<br>
 \begin{cases}<br>
-\displaystyle \sum_{c=d+1}^{'z'} \sum_{x=i}^{n} f_{c,0/1,x}, &amp; \text{if } q = 0<br>
-\displaystyle \sum_{c='a'}^{d-1} \sum_{x=i}^{n} f_{c,0/1,x}, &amp; \text{if } q = 1<br>
+\displaystyle \sum_{c=d+1}^{\text{'z'}} \sum_{x=i}^{n} f_{c,0/1,x}, &amp; \text{if } q = 0 \<br>
+\displaystyle \sum_{c=\text{'a'}}^{d-1} \sum_{x=i}^{n} f_{c,0/1,x}, &amp; \text{if } q = 1<br>
 \end{cases}<br>
 $$<br>
 由于 $x \in [1,i)$ 的状态都是零，我们可以改一改：<br>
 $$<br>
 f_{d,q,i-1} \mathrel{+}=<br>
 \begin{cases}<br>
-\displaystyle \sum_{c=d+1}^{'z'} \sum_{x=1}^{n} f_{c,0/1,x}, &amp; \text{if } q = 0<br>
-\displaystyle \sum_{c='a'}^{d-1} \sum_{x=1}^{n} f_{c,0/1,x}, &amp; \text{if } q = 1<br>
+\displaystyle \sum_{c=d+1}^{\text{'z'}} \sum_{x=1}^{n} f_{c,0/1,x}, &amp; \text{if } q = 0 \<br>
+\displaystyle \sum_{c=\text{'a'}}^{d-1} \sum_{x=1}^{n} f_{c,0/1,x}, &amp; \text{if } q = 1<br>
 \end{cases}<br>
 $$<br>
 那么我们惊讶地发现第一种状态转移除了被滚掉的 $i$ 之外什么都没有变化，可以直接拿来做初始值。<br>
-显然需要数据结构优化。将复杂度为常数的 $(c,p)$ 拿出来做 $52$ 个数据结构是个不错的想法。每个数据结构下表是 $x$<br>
+显然需要数据结构优化。将复杂度为常数的 $(c,p)$ 拿出来做 $52$ 个数据结构是个不错的想法。每个数据结构下标是 $x$<br>
 于是现在我们只需要考虑两种操作：</p>
 <ol>
 <li>清空操作，将 $x \lt k$ 的状态全部清空</li>
