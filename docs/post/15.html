@@ -172,7 +172,7 @@ f_{i-1,i-1,d,q} \mathrel{+}= f_{i,x,c,p}<br>
 $$<br>
 于是可以表示成<br>
 $$<br>
-f_{i-1,i-1,d,q} \mathrel{+}= \sum^{n}<em>{x=i}([q=1]\sum^{d-1}</em>{c=\text{'a'}}f_{i,x,c,0/1}+[q=0]\sum^{\text{'z'}}<em>{c=d+1}f</em>{i,x,c,0/1})<br>
+f_{i-1,i-1,d,q} \mathrel{+}= \sum^{n}<em>{x=i}([q=1]\sum^{d-1}</em>{c=0}f_{i,x,c,0/1}+[q=0]\sum^{25}<em>{c=d+1}f</em>{i,x,c,0/1})<br>
 $$<br>
 此时再考虑合法性。<br>
 如果 $A \gt B$, 那么当 $i=A$ 时，落在 $[A, B-1]$ 内的 $x$ 如果同时 $q=0$ 就需要清零；<br>
@@ -184,16 +184,16 @@ $$<br>
 $$<br>
 f_{d,q,i-1} \mathrel{+}=<br>
 \begin{cases}<br>
-\displaystyle \sum_{c=d+1}^{\text{'z'}} \sum_{x=i}^{n} f_{c,0/1,x}, &amp; \text{if } q = 0 \<br>
-\displaystyle \sum_{c=\text{'a'}}^{d-1} \sum_{x=i}^{n} f_{c,0/1,x}, &amp; \text{if } q = 1<br>
+\displaystyle \sum_{c=d+1}^{25} \sum_{x=i}^{n} f_{c,0/1,x}, &amp; \text{if } q = 0 \<br>
+\displaystyle \sum_{c=0}^{d-1} \sum_{x=i}^{n} f_{c,0/1,x}, &amp; \text{if } q = 1<br>
 \end{cases}<br>
 $$<br>
 由于 $x \in [1,i)$ 的状态都是零，我们可以改一改：<br>
 $$<br>
 f_{d,q,i-1} \mathrel{+}=<br>
 \begin{cases}<br>
-\displaystyle \sum_{c=d+1}^{\text{'z'}} \sum_{x=1}^{n} f_{c,0/1,x}, &amp; \text{if } q = 0 \<br>
-\displaystyle \sum_{c=\text{'a'}}^{d-1} \sum_{x=1}^{n} f_{c,0/1,x}, &amp; \text{if } q = 1<br>
+\displaystyle \sum_{c=d+1}^{25} \sum_{x=1}^{n} f_{c,0/1,x}, &amp; \text{if } q = 0 \<br>
+\displaystyle \sum_{c=0}^{d-1} \sum_{x=1}^{n} f_{c,0/1,x}, &amp; \text{if } q = 1<br>
 \end{cases}<br>
 $$<br>
 那么我们惊讶地发现第一种状态转移除了被滚掉的 $i$ 之外什么都没有变化，可以直接拿来做初始值。<br>
