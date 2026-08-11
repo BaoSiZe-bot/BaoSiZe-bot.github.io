@@ -184,7 +184,7 @@ $$<br>
 $$<br>
 f_{d,q,i-1} \mathrel{+}=<br>
 \begin{cases}<br>
-\displaystyle \sum_{c=d+1}^{25} \sum_{x=i}^{n} f_{c,0/1,x}, &amp; \text{if } q = 0 \\<br>
+\displaystyle \sum_{c=d+1}^{25} \sum_{x=i}^{n} f_{c,0/1,x}, &amp; \text{if } q = 0 \\[4ex]<br>
 \displaystyle \sum_{c=0}^{d-1} \sum_{x=i}^{n} f_{c,0/1,x}, &amp; \text{if } q = 1<br>
 \end{cases}<br>
 $$<br>
@@ -192,8 +192,8 @@ $$<br>
 $$<br>
 f_{d,q,i-1} \mathrel{+}=<br>
 \begin{cases}<br>
-\displaystyle \sum_{c=d+1}^{25} \sum_{x=i}^{n} f_{c,0/1,x}, &amp; \text{if } q = 0 \\<br>
-\displaystyle \sum_{c=0}^{d-1} \sum_{x=i}^{n} f_{c,0/1,x}, &amp; \text{if } q = 1<br>
+\displaystyle \sum_{c=d+1}^{25} \sum_{x=1}^{n} f_{c,0/1,x}, &amp; \text{if } q = 0 \\[4ex]<br>
+\displaystyle \sum_{c=0}^{d-1} \sum_{x=1}^{n} f_{c,0/1,x}, &amp; \text{if } q = 1<br>
 \end{cases}<br>
 $$<br>
 那么我们惊讶地发现第一种状态转移除了被滚掉的 $i$ 之外什么都没有变化，可以直接拿来做初始值。<br>
