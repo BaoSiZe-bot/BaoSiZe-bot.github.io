@@ -133,7 +133,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         <span class="pl-k">if</span> (p1 == p2) {
             p2 = (p1 = buf) + <span class="pl-c1">fread</span>(buf, <span class="pl-c1">1</span>, <span class="pl-c1">1</span> &lt;&lt; <span class="pl-c1">21</span>, stdin);
             <span class="pl-c"><span class="pl-c">//</span> If read failed or EOF reached, return EOF</span>
-            <span class="pl-k">if</span> (p1 == p2) <span class="pl-k">return</span> EOF;
+            <span class="pl-k">if</span> (p1 == p2) <span class="pl-k">return</span> <span class="pl-c1">EOF</span>;
         }
         <span class="pl-c"><span class="pl-c">//</span> Return the next character from the buffer</span>
         <span class="pl-k">return</span> *p1++;
@@ -145,14 +145,14 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         x = <span class="pl-c1">0</span>; <span class="pl-c"><span class="pl-c">//</span> Initialize the value</span>
         <span class="pl-k">char</span> c = <span class="pl-c1">gc</span>(); <span class="pl-c"><span class="pl-c">//</span> Get the first character</span>
         <span class="pl-c"><span class="pl-c">//</span> Check for EOF at the very beginning</span>
-        <span class="pl-k">if</span> (c == EOF) <span class="pl-k">return</span> <span class="pl-c1">false</span>; 
+        <span class="pl-k">if</span> (c == <span class="pl-c1">EOF</span>) <span class="pl-k">return</span> <span class="pl-c1">false</span>; 
         <span class="pl-k">bool</span> f = <span class="pl-c1">false</span>; <span class="pl-c"><span class="pl-c">//</span> Flag for negative numbers</span>
         <span class="pl-c"><span class="pl-c">//</span> Skip non-digit characters, check for negative sign and EOF</span>
         <span class="pl-k">while</span> (c &lt; <span class="pl-s"><span class="pl-pds">'</span>0<span class="pl-pds">'</span></span> || c &gt; <span class="pl-s"><span class="pl-pds">'</span>9<span class="pl-pds">'</span></span>) {
             <span class="pl-k">if</span> (c == <span class="pl-s"><span class="pl-pds">'</span>-<span class="pl-pds">'</span></span>) f = <span class="pl-c1">true</span>;
             c = <span class="pl-c1">gc</span>();
             <span class="pl-c"><span class="pl-c">//</span> Check for EOF while skipping non-digits</span>
-            <span class="pl-k">if</span> (c == EOF) <span class="pl-k">return</span> <span class="pl-c1">true</span>; <span class="pl-c"><span class="pl-c">//</span> Return true if we potentially read a sign before EOF</span>
+            <span class="pl-k">if</span> (c == <span class="pl-c1">EOF</span>) <span class="pl-k">return</span> <span class="pl-c1">true</span>; <span class="pl-c"><span class="pl-c">//</span> Return true if we potentially read a sign before EOF</span>
         }
         <span class="pl-c"><span class="pl-c">//</span> Read digits and build the number</span>
         <span class="pl-k">while</span> (c &gt;= <span class="pl-s"><span class="pl-pds">'</span>0<span class="pl-pds">'</span></span> &amp;&amp; c &lt;= <span class="pl-s"><span class="pl-pds">'</span>9<span class="pl-pds">'</span></span>) {
@@ -252,23 +252,23 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">FastIO</span><span class="pl-k">;</span> <span class="pl-c"><span class="pl-c">//</span> Make FastIO functions available without namespace prefix</span>
 
 <span class="pl-c"><span class="pl-c">//</span> Constants used in the problem</span>
-<span class="pl-k">const</span> <span class="pl-k">int</span> MOD = <span class="pl-c1">998244353</span>; <span class="pl-c"><span class="pl-c">//</span> The specified modulus</span>
+<span class="pl-k">const</span> <span class="pl-k">int</span> <span class="pl-c1">MOD</span> = <span class="pl-c1">998244353</span>; <span class="pl-c"><span class="pl-c">//</span> The specified modulus</span>
 <span class="pl-c"><span class="pl-c">//</span> Maximum possible value for n + m (2e6 + 2e6 = 4e6). Add a small buffer.</span>
-<span class="pl-k">const</span> <span class="pl-k">int</span> MAX_N_PLUS_M = <span class="pl-c1">4000005</span>; 
+<span class="pl-k">const</span> <span class="pl-k">int</span> <span class="pl-c1">MAX_N_PLUS_M</span> = <span class="pl-c1">4000005</span>; 
 
 <span class="pl-c"><span class="pl-c">//</span> Arrays to store precomputed factorials and inverse factorials</span>
-<span class="pl-k">long</span> <span class="pl-k">long</span> fact[MAX_N_PLUS_M];
-<span class="pl-k">long</span> <span class="pl-k">long</span> invFact[MAX_N_PLUS_M];
+<span class="pl-k">long</span> <span class="pl-k">long</span> fact[<span class="pl-c1">MAX_N_PLUS_M</span>];
+<span class="pl-k">long</span> <span class="pl-k">long</span> invFact[<span class="pl-c1">MAX_N_PLUS_M</span>];
 
 <span class="pl-c"><span class="pl-c">//</span> Function for modular exponentiation (calculates base^exp % MOD)</span>
 <span class="pl-k">long</span> <span class="pl-k">long</span> <span class="pl-en">power</span>(<span class="pl-k">long</span> <span class="pl-k">long</span> base, <span class="pl-k">long</span> <span class="pl-k">long</span> exp) {
     <span class="pl-k">long</span> <span class="pl-k">long</span> res = <span class="pl-c1">1</span>; <span class="pl-c"><span class="pl-c">//</span> Initialize result</span>
-    base %= MOD; <span class="pl-c"><span class="pl-c">//</span> Reduce base modulo MOD</span>
+    base %= <span class="pl-c1">MOD</span>; <span class="pl-c"><span class="pl-c">//</span> Reduce base modulo MOD</span>
     <span class="pl-k">while</span> (exp &gt; <span class="pl-c1">0</span>) {
         <span class="pl-c"><span class="pl-c">//</span> If exponent is odd, multiply result by base</span>
-        <span class="pl-k">if</span> (exp % <span class="pl-c1">2</span> == <span class="pl-c1">1</span>) res = (res * base) % MOD; 
+        <span class="pl-k">if</span> (exp % <span class="pl-c1">2</span> == <span class="pl-c1">1</span>) res = (res * base) % <span class="pl-c1">MOD</span>; 
         <span class="pl-c"><span class="pl-c">//</span> Square the base</span>
-        base = (base * base) % MOD; 
+        base = (base * base) % <span class="pl-c1">MOD</span>; 
         <span class="pl-c"><span class="pl-c">//</span> Halve the exponent</span>
         exp /= <span class="pl-c1">2</span>; 
     }
@@ -278,7 +278,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-c"><span class="pl-c">//</span> Function for calculating modular inverse using Fermat's Little Theorem</span>
 <span class="pl-c"><span class="pl-c">//</span> Calculates n^(MOD-2) % MOD, which is the inverse of n modulo MOD (for prime MOD)</span>
 <span class="pl-k">long</span> <span class="pl-k">long</span> <span class="pl-en">modInverse</span>(<span class="pl-k">long</span> <span class="pl-k">long</span> n) {
-    <span class="pl-k">return</span> <span class="pl-c1">power</span>(n, MOD - <span class="pl-c1">2</span>);
+    <span class="pl-k">return</span> <span class="pl-c1">power</span>(n, <span class="pl-c1">MOD</span> - <span class="pl-c1">2</span>);
 }
 
 <span class="pl-c"><span class="pl-c">//</span> Function to precompute factorials and their modular inverses up to N</span>
@@ -288,7 +288,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     fact[<span class="pl-c1">0</span>] = <span class="pl-c1">1</span>; <span class="pl-c"><span class="pl-c">//</span> Base case: 0! = 1</span>
     <span class="pl-c"><span class="pl-c">//</span> Compute factorials iteratively: fact[i] = fact[i-1] * i % MOD</span>
     <span class="pl-k">for</span> (<span class="pl-k">int</span> i = <span class="pl-c1">1</span>; i &lt;= N; i++) {
-        fact[i] = (fact[i - <span class="pl-c1">1</span>] * i) % MOD;
+        fact[i] = (fact[i - <span class="pl-c1">1</span>] * i) % <span class="pl-c1">MOD</span>;
     }
     <span class="pl-c"><span class="pl-c">//</span> Calculate inverse factorial of N using modular inverse</span>
     <span class="pl-c"><span class="pl-c">//</span> Ensure fact[N] is not 0 (should not happen for N &lt; P)</span>
@@ -299,7 +299,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <span class="pl-c"><span class="pl-c">//</span> Compute inverse factorials iteratively in reverse order:</span>
     <span class="pl-c"><span class="pl-c">//</span> invFact[i] = invFact[i+1] * (i+1) % MOD</span>
     <span class="pl-k">for</span> (<span class="pl-k">int</span> i = N - <span class="pl-c1">1</span>; i &gt;= <span class="pl-c1">0</span>; i--) {
-        invFact[i] = (invFact[i + <span class="pl-c1">1</span>] * (i + <span class="pl-c1">1</span>)) % MOD;
+        invFact[i] = (invFact[i + <span class="pl-c1">1</span>] * (i + <span class="pl-c1">1</span>)) % <span class="pl-c1">MOD</span>;
     }
 }
 
@@ -312,14 +312,14 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     }
     <span class="pl-c"><span class="pl-c">//</span> Check if arguments are within bounds of precomputed arrays</span>
     <span class="pl-c"><span class="pl-c">//</span> This check is mostly for safety; based on MAX_N_PLUS_M calculation, it should be fine.</span>
-    <span class="pl-k">if</span> (n &gt;= MAX_N_PLUS_M || r &gt;= MAX_N_PLUS_M || (n-r) &lt; <span class="pl-c1">0</span> || (n-r) &gt;= MAX_N_PLUS_M) {
+    <span class="pl-k">if</span> (n &gt;= <span class="pl-c1">MAX_N_PLUS_M</span> || r &gt;= <span class="pl-c1">MAX_N_PLUS_M</span> || (n-r) &lt; <span class="pl-c1">0</span> || (n-r) &gt;= <span class="pl-c1">MAX_N_PLUS_M</span>) {
        <span class="pl-c"><span class="pl-c">//</span> Error: Arguments out of precomputed range.</span>
        <span class="pl-c"><span class="pl-c">//</span> Depending on requirements, could return an error code or throw exception.</span>
        <span class="pl-c"><span class="pl-c">//</span> For this problem setup, this path should not be hit.</span>
        <span class="pl-k">return</span> -<span class="pl-c1">1</span>; 
     }
     <span class="pl-c"><span class="pl-c">//</span> Calculate nCr using the formula: fact[n] * invFact[r] * invFact[n-r] % MOD</span>
-    <span class="pl-k">return</span> (((fact[n] * invFact[r]) % MOD) * invFact[n - r]) % MOD;
+    <span class="pl-k">return</span> (((fact[n] * invFact[r]) % <span class="pl-c1">MOD</span>) * invFact[n - r]) % <span class="pl-c1">MOD</span>;
 }
 
 <span class="pl-c"><span class="pl-c">//</span> Global vector to store powers of k, reused across test cases for optimization</span>
@@ -366,7 +366,7 @@ std::vector&lt;<span class="pl-k">long</span> <span class="pl-k">long</span>&gt;
             <span class="pl-c"><span class="pl-c">//</span> Compute powers iteratively: k^i = k^(i-1) * k % MOD</span>
             <span class="pl-k">for</span> (<span class="pl-k">int</span> i = start_idx; i &lt;= max_power_needed; ++i) {
                  <span class="pl-c"><span class="pl-c">//</span> Need k_powers[i-1] which should be available</span>
-                 k_powers[i] = (k_powers[i-<span class="pl-c1">1</span>] * k) % MOD;
+                 k_powers[i] = (k_powers[i-<span class="pl-c1">1</span>] * k) % <span class="pl-c1">MOD</span>;
             }
         }
 
@@ -388,7 +388,7 @@ std::vector&lt;<span class="pl-k">long</span> <span class="pl-k">long</span>&gt;
 <span class="pl-k">int</span> <span class="pl-en">main</span>() {
     <span class="pl-c"><span class="pl-c">//</span> Precompute factorials and inverse factorials up to the maximum possible N = n + m</span>
     <span class="pl-c"><span class="pl-c">//</span> MAX_N_PLUS_M-1 because array indices go up to N.</span>
-    <span class="pl-c1">precompute_combinations</span>(MAX_N_PLUS_M - <span class="pl-c1">1</span>); 
+    <span class="pl-c1">precompute_combinations</span>(<span class="pl-c1">MAX_N_PLUS_M</span> - <span class="pl-c1">1</span>); 
 
     <span class="pl-k">int</span> T; <span class="pl-c"><span class="pl-c">//</span> Number of test cases</span>
     <span class="pl-c1">read</span>(T); <span class="pl-c"><span class="pl-c">//</span> Read T using FastIO</span>
@@ -428,11 +428,11 @@ std::vector&lt;<span class="pl-k">long</span> <span class="pl-k">long</span>&gt;
         <span class="pl-c"><span class="pl-c">//</span> F_m(1) = C(n-1+m, m)</span>
         <span class="pl-k">long</span> <span class="pl-k">long</span> Fm1 = <span class="pl-c1">nCr_mod</span>(n - <span class="pl-c1">1</span> + m, m);
         <span class="pl-c"><span class="pl-c">//</span> Add F_m(1) * k % MOD to the total shininess</span>
-        total_shininess = (Fm1 * k) % MOD;
+        total_shininess = (Fm1 * k) % <span class="pl-c1">MOD</span>;
 
         <span class="pl-c"><span class="pl-c">//</span> Calculate the second component: (k-1) * sum_{v=2..n} F_m(v)*k^(v-1)</span>
         <span class="pl-c"><span class="pl-c">//</span> Calculate (k-1) mod P safely (handles k=1 implicitly, but we already branched)</span>
-        <span class="pl-k">long</span> <span class="pl-k">long</span> k_minus_1 = (k - <span class="pl-c1">1</span> + MOD) % MOD; 
+        <span class="pl-k">long</span> <span class="pl-k">long</span> k_minus_1 = (k - <span class="pl-c1">1</span> + <span class="pl-c1">MOD</span>) % <span class="pl-c1">MOD</span>; 
         <span class="pl-k">long</span> <span class="pl-k">long</span> current_sum_term = <span class="pl-c1">0</span>; <span class="pl-c"><span class="pl-c">//</span> Initialize the sum part</span>
         <span class="pl-c"><span class="pl-c">//</span> Loop through v from 2 to n</span>
         <span class="pl-k">for</span> (<span class="pl-k">int</span> v = <span class="pl-c1">2</span>; v &lt;= n; ++v) {
@@ -442,12 +442,12 @@ std::vector&lt;<span class="pl-k">long</span> <span class="pl-k">long</span>&gt;
             <span class="pl-c"><span class="pl-c">//</span> Index needed is v-1. Max index is n-1.</span>
             <span class="pl-k">long</span> <span class="pl-k">long</span> kv_minus_1 = k_powers[v-<span class="pl-c1">1</span>]; 
             <span class="pl-c"><span class="pl-c">//</span> Calculate the term F_m(v) * k^(v-1) % MOD</span>
-            <span class="pl-k">long</span> <span class="pl-k">long</span> term = (Fmv * kv_minus_1) % MOD;
+            <span class="pl-k">long</span> <span class="pl-k">long</span> term = (Fmv * kv_minus_1) % <span class="pl-c1">MOD</span>;
             <span class="pl-c"><span class="pl-c">//</span> Add the term to the running sum</span>
-            current_sum_term = (current_sum_term + term) % MOD;
+            current_sum_term = (current_sum_term + term) % <span class="pl-c1">MOD</span>;
         }
         <span class="pl-c"><span class="pl-c">//</span> Add the second component to the total shininess: (sum * (k-1)) % MOD</span>
-        total_shininess = (total_shininess + (current_sum_term * k_minus_1) % MOD) % MOD;
+        total_shininess = (total_shininess + (current_sum_term * k_minus_1) % <span class="pl-c1">MOD</span>) % <span class="pl-c1">MOD</span>;
 
         <span class="pl-c"><span class="pl-c">//</span> Output the final calculated total shininess for the test case</span>
         <span class="pl-c1">writeln</span>(total_shininess);
@@ -492,15 +492,15 @@ std::vector&lt;<span class="pl-k">long</span> <span class="pl-k">long</span>&gt;
 
 总结：该解决方案的时间复杂度为 $O(\max(n+m) + \sum n)$。</pre></div>
 <p>第三份回答：</p>
-<div class="highlight highlight-source-c++"><pre class="notranslate">您是对的，原始的 $O(N_{max} + \sum n)$ 复杂度分析中，虽然 $\sum n$ 可能在限制内（例如 $<span class="pl-c1">2</span> \times <span class="pl-c1">10</span>^<span class="pl-c1">7</span>$），但如果 $T$ 很大（例如 $<span class="pl-c1">5</span> \times <span class="pl-c1">10</span>^<span class="pl-c1">5</span>$）且某些测试用例的 $n$ 较大（例如 $<span class="pl-c1">10</span>^<span class="pl-c1">5</span>$），那么单次 $O(n)$ 的计算也可能导致超时。寻求一个与 $m$ 相关的复杂度是更优的策略。
+<div class="highlight highlight-source-c++"><pre class="notranslate">您是对的，原始的 $O(<span class="pl-c1">N_</span>{max} + \sum n)$ 复杂度分析中，虽然 $\sum n$ 可能在限制内（例如 $<span class="pl-c1">2</span> \times <span class="pl-c1">10</span>^<span class="pl-c1">7</span>$），但如果 $T$ 很大（例如 $<span class="pl-c1">5</span> \times <span class="pl-c1">10</span>^<span class="pl-c1">5</span>$）且某些测试用例的 $n$ 较大（例如 $<span class="pl-c1">10</span>^<span class="pl-c1">5</span>$），那么单次 $O(n)$ 的计算也可能导致超时。寻求一个与 $m$ 相关的复杂度是更优的策略。
 
 让我们回顾之前的推导。我们得到了总闪耀度 $W_t = \sum_{v=<span class="pl-c1">1</span>}^n <span class="pl-en">f_t</span>(v) k^v$ 的递推关系：
 $W_t = C W_{t-<span class="pl-c1">1</span>} - C \binom{n+t-<span class="pl-c1">2</span>}{t-<span class="pl-c1">1</span>}$
 其中 $C = \frac{k}{k-<span class="pl-c1">1</span>} \pmod{<span class="pl-c1">998244353</span>}$，且此递推在 $k \neq <span class="pl-c1">1</span>$ 时成立。
 
 我们解这个递推关系，得到：
-$W_m = C^m W_0 - \sum_{i=<span class="pl-c1">1</span>}^m C^{m-i+<span class="pl-c1">1</span>} \binom{n+i-<span class="pl-c1">2</span>}{i-<span class="pl-c1">1</span>}$
-其中 $W_0 = k^n$ (初始只有一个大小为 $n$ 的星团)。
+$W_m = C^m <span class="pl-c1">W_0</span> - \sum_{i=<span class="pl-c1">1</span>}^m C^{m-i+<span class="pl-c1">1</span>} \binom{n+i-<span class="pl-c1">2</span>}{i-<span class="pl-c1">1</span>}$
+其中 $<span class="pl-c1">W_0</span> = k^n$ (初始只有一个大小为 $n$ 的星团)。
 
 所以，最终的闪耀度 $W_m$ 为：
 $W_m = C^m k^n - C \sum_{i=<span class="pl-c1">1</span>}^m C^{m-i} \binom{n+i-<span class="pl-c1">2</span>}{i-<span class="pl-c1">1</span>} \pmod{<span class="pl-c1">998244353</span>}$
@@ -517,25 +517,25 @@ $W_m = C^m k^n - C \sum_{i=<span class="pl-c1">1</span>}^m C^{m-i} \binom{n+i-<s
         * 我们可以预先计算 $C^<span class="pl-c1">0</span>, C^<span class="pl-c1">1</span>, \dots, C^m$。这需要 $O(m)$ 时间。
         * 然后循环 $i$ 从 $<span class="pl-c1">1</span>$ 到 $m$：
             * 取出预计算的 $C^{m-i}$。
-            * 计算 $\binom{n+i-<span class="pl-c1">2</span>}{i-<span class="pl-c1">1</span>}$。使用预处理的阶乘和逆元，这需要 $O(<span class="pl-c1">1</span>)$ 时间。注意所需的最大组合数上参数为 $n+m-<span class="pl-c1">2</span>$，这在我们预处理的范围内 ($N_{max} \approx n+m$)。
+            * 计算 $\binom{n+i-<span class="pl-c1">2</span>}{i-<span class="pl-c1">1</span>}$。使用预处理的阶乘和逆元，这需要 $O(<span class="pl-c1">1</span>)$ 时间。注意所需的最大组合数上参数为 $n+m-<span class="pl-c1">2</span>$，这在我们预处理的范围内 ($<span class="pl-c1">N_</span>{max} \approx n+m$)。
             * 将 $C^{m-i} \times \binom{n+i-<span class="pl-c1">2</span>}{i-<span class="pl-c1">1</span>}$ 累加到 $S$ 中。
         * 计算这个和的总时间复杂度是 $O(m)$。
-    * 计算最终结果 $W_m = (C^m k^n - C \cdot S) \pmod P$。注意处理减法可能产生的负数，要加上 $MOD$ 再取模。这需要 $O(<span class="pl-c1">1</span>)$ 时间。
+    * 计算最终结果 $W_m = (C^m k^n - C \cdot S) \pmod P$。注意处理减法可能产生的负数，要加上 $<span class="pl-c1">MOD</span>$ 再取模。这需要 $O(<span class="pl-c1">1</span>)$ 时间。
 
 **时间复杂度分析 (新方法)**:
-* **预处理组合数**: $O(N_{max}) = O(\max(n+m))$。
+* **预处理组合数**: $O(<span class="pl-c1">N_</span>{max}) = O(\max(n+m))$。
 * **每个测试用例**:
     * 特殊情况 $k=<span class="pl-c1">0</span>, k=<span class="pl-c1">1</span>$：$O(<span class="pl-c1">1</span>)$。
-    * 一般情况 $k&gt;<span class="pl-c1">1</span>$：计算模逆元 $O(\log MOD)$，计算 $C$ 是 $O(<span class="pl-c1">1</span>)$，计算 $C^m, k^n$ 是 $O(\log m + \log n)$，预计算 $C$ 的幂是 $O(m)$，计算求和项 $S$ 是 $O(m)$，最后组合结果是 $O(<span class="pl-c1">1</span>)$。因此，每个测试用例的时间复杂度是 $O(m + \log n + \log m)$。
-* **总时间复杂度**: $O(N_{max} + \sum (m + \log n))$。
+    * 一般情况 $k&gt;<span class="pl-c1">1</span>$：计算模逆元 $O(\log <span class="pl-c1">MOD</span>)$，计算 $C$ 是 $O(<span class="pl-c1">1</span>)$，计算 $C^m, k^n$ 是 $O(\log m + \log n)$，预计算 $C$ 的幂是 $O(m)$，计算求和项 $S$ 是 $O(m)$，最后组合结果是 $O(<span class="pl-c1">1</span>)$。因此，每个测试用例的时间复杂度是 $O(m + \log n + \log m)$。
+* **总时间复杂度**: $O(<span class="pl-c1">N_</span>{max} + \sum (m + \log n))$。
     * 因为 $m \ge <span class="pl-c1">1</span>$, $m$ 通常远大于 $\log n$ 和 $\log m$。
-    * 所以总复杂度近似为 $O(N_{max} + \sum m)$。
+    * 所以总复杂度近似为 $O(<span class="pl-c1">N_</span>{max} + \sum m)$。
 
 **对比**:
-* 旧方法复杂度: $O(N_{max} + \sum n)$
-* 新方法复杂度: $O(N_{max} + \sum m)$
+* 旧方法复杂度: $O(<span class="pl-c1">N_</span>{max} + \sum n)$
+* 新方法复杂度: $O(<span class="pl-c1">N_</span>{max} + \sum m)$
 
-根据题目限制 $\sum m \le <span class="pl-c1">2</span> \times <span class="pl-c1">10</span>^<span class="pl-c1">7</span>$ 和 $N_{max} \approx <span class="pl-c1">4</span> \times <span class="pl-c1">10</span>^<span class="pl-c1">6</span>$，新方法的总复杂度约为 $O(<span class="pl-c1">4</span> \times <span class="pl-c1">10</span>^<span class="pl-c1">6</span> + <span class="pl-c1">2</span> \times <span class="pl-c1">10</span>^<span class="pl-c1">7</span>) = O(<span class="pl-c1">2.4</span> \times <span class="pl-c1">10</span>^<span class="pl-c1">7</span>)$，这完全符合要求，并且避免了对 $\sum n$ 的依赖，从而解决了当单个 $n$ 很大时可能出现的问题。
+根据题目限制 $\sum m \le <span class="pl-c1">2</span> \times <span class="pl-c1">10</span>^<span class="pl-c1">7</span>$ 和 $<span class="pl-c1">N_</span>{max} \approx <span class="pl-c1">4</span> \times <span class="pl-c1">10</span>^<span class="pl-c1">6</span>$，新方法的总复杂度约为 $O(<span class="pl-c1">4</span> \times <span class="pl-c1">10</span>^<span class="pl-c1">6</span> + <span class="pl-c1">2</span> \times <span class="pl-c1">10</span>^<span class="pl-c1">7</span>) = O(<span class="pl-c1">2.4</span> \times <span class="pl-c1">10</span>^<span class="pl-c1">7</span>)$，这完全符合要求，并且避免了对 $\sum n$ 的依赖，从而解决了当单个 $n$ 很大时可能出现的问题。
 
 下面是采用了这个 $O(m)$ 计算方法的 C++ 代码实现：
 
@@ -551,7 +551,7 @@ $W_m = C^m k^n - C \sum_{i=<span class="pl-c1">1</span>}^m C^{m-i} \binom{n+i-<s
     <span class="pl-k">inline</span> <span class="pl-k">char</span> <span class="pl-en">gc</span>() {
         <span class="pl-k">if</span> (p1 == p2) {
             p2 = (p1 = buf) + <span class="pl-c1">fread</span>(buf, <span class="pl-c1">1</span>, <span class="pl-c1">1</span> &lt;&lt; <span class="pl-c1">21</span>, stdin);
-            <span class="pl-k">if</span> (p1 == p2) <span class="pl-k">return</span> EOF;
+            <span class="pl-k">if</span> (p1 == p2) <span class="pl-k">return</span> <span class="pl-c1">EOF</span>;
         }
         <span class="pl-k">return</span> *p1++;
     }
@@ -560,13 +560,13 @@ $W_m = C^m k^n - C \sum_{i=<span class="pl-c1">1</span>}^m C^{m-i} \binom{n+i-<s
     <span class="pl-k">inline</span> <span class="pl-k">bool</span> <span class="pl-en">read</span>(T &amp;x) { 
         x = <span class="pl-c1">0</span>; 
         <span class="pl-k">char</span> c = <span class="pl-c1">gc</span>(); 
-        <span class="pl-k">if</span> (c == EOF) <span class="pl-k">return</span> <span class="pl-c1">false</span>; 
+        <span class="pl-k">if</span> (c == <span class="pl-c1">EOF</span>) <span class="pl-k">return</span> <span class="pl-c1">false</span>; 
         <span class="pl-k">bool</span> f = <span class="pl-c1">false</span>; 
-        <span class="pl-k">while</span> (c != EOF &amp;&amp; (c &lt; <span class="pl-s"><span class="pl-pds">'</span>0<span class="pl-pds">'</span></span> || c &gt; <span class="pl-s"><span class="pl-pds">'</span>9<span class="pl-pds">'</span></span>)) { 
+        <span class="pl-k">while</span> (c != <span class="pl-c1">EOF</span> &amp;&amp; (c &lt; <span class="pl-s"><span class="pl-pds">'</span>0<span class="pl-pds">'</span></span> || c &gt; <span class="pl-s"><span class="pl-pds">'</span>9<span class="pl-pds">'</span></span>)) { 
             <span class="pl-k">if</span> (c == <span class="pl-s"><span class="pl-pds">'</span>-<span class="pl-pds">'</span></span>) f = <span class="pl-c1">true</span>;
             c = <span class="pl-c1">gc</span>();
         }
-         <span class="pl-k">if</span> (c == EOF) <span class="pl-k">return</span> !f; 
+         <span class="pl-k">if</span> (c == <span class="pl-c1">EOF</span>) <span class="pl-k">return</span> !f; 
         <span class="pl-k">if</span> (c &lt; <span class="pl-s"><span class="pl-pds">'</span>0<span class="pl-pds">'</span></span> || c &gt; <span class="pl-s"><span class="pl-pds">'</span>9<span class="pl-pds">'</span></span>) <span class="pl-k">return</span> <span class="pl-c1">false</span>; 
 
         <span class="pl-k">while</span> (c &gt;= <span class="pl-s"><span class="pl-pds">'</span>0<span class="pl-pds">'</span></span> &amp;&amp; c &lt;= <span class="pl-s"><span class="pl-pds">'</span>9<span class="pl-pds">'</span></span>) {
@@ -626,23 +626,23 @@ $W_m = C^m k^n - C \sum_{i=<span class="pl-c1">1</span>}^m C^{m-i} \binom{n+i-<s
 <span class="pl-c"><span class="pl-c">//</span> --- Fast I/O End ---</span>
 
 <span class="pl-c"><span class="pl-c">//</span> Constants</span>
-<span class="pl-k">const</span> <span class="pl-k">int</span> MOD = <span class="pl-c1">998244353</span>; 
-<span class="pl-k">const</span> <span class="pl-k">int</span> MAX_N_PLUS_M = <span class="pl-c1">4000005</span>; <span class="pl-c"><span class="pl-c">//</span> Max N+M for combinations</span>
-<span class="pl-k">const</span> <span class="pl-k">int</span> MAX_M = <span class="pl-c1">2000005</span>; <span class="pl-c"><span class="pl-c">//</span> Max M for C_powers array</span>
+<span class="pl-k">const</span> <span class="pl-k">int</span> <span class="pl-c1">MOD</span> = <span class="pl-c1">998244353</span>; 
+<span class="pl-k">const</span> <span class="pl-k">int</span> <span class="pl-c1">MAX_N_PLUS_M</span> = <span class="pl-c1">4000005</span>; <span class="pl-c"><span class="pl-c">//</span> Max N+M for combinations</span>
+<span class="pl-k">const</span> <span class="pl-k">int</span> <span class="pl-c1">MAX_M</span> = <span class="pl-c1">2000005</span>; <span class="pl-c"><span class="pl-c">//</span> Max M for C_powers array</span>
 
 <span class="pl-c"><span class="pl-c">//</span> Precomputed arrays</span>
-<span class="pl-k">long</span> <span class="pl-k">long</span> fact[MAX_N_PLUS_M];
-<span class="pl-k">long</span> <span class="pl-k">long</span> invFact[MAX_N_PLUS_M];
-<span class="pl-k">long</span> <span class="pl-k">long</span> C_powers[MAX_M]; <span class="pl-c"><span class="pl-c">//</span> Stores powers of C = k/(k-1)</span>
+<span class="pl-k">long</span> <span class="pl-k">long</span> fact[<span class="pl-c1">MAX_N_PLUS_M</span>];
+<span class="pl-k">long</span> <span class="pl-k">long</span> invFact[<span class="pl-c1">MAX_N_PLUS_M</span>];
+<span class="pl-k">long</span> <span class="pl-k">long</span> C_powers[<span class="pl-c1">MAX_M</span>]; <span class="pl-c"><span class="pl-c">//</span> Stores powers of C = k/(k-1)</span>
 
 <span class="pl-c"><span class="pl-c">//</span> Modular exponentiation</span>
 <span class="pl-k">long</span> <span class="pl-k">long</span> <span class="pl-en">power</span>(<span class="pl-k">long</span> <span class="pl-k">long</span> base, <span class="pl-k">long</span> <span class="pl-k">long</span> exp) {
     <span class="pl-k">long</span> <span class="pl-k">long</span> res = <span class="pl-c1">1</span>;
-    base %= MOD;
-    <span class="pl-k">if</span> (base &lt; <span class="pl-c1">0</span>) base += MOD; <span class="pl-c"><span class="pl-c">//</span> Ensure base is non-negative</span>
+    base %= <span class="pl-c1">MOD</span>;
+    <span class="pl-k">if</span> (base &lt; <span class="pl-c1">0</span>) base += <span class="pl-c1">MOD</span>; <span class="pl-c"><span class="pl-c">//</span> Ensure base is non-negative</span>
     <span class="pl-k">while</span> (exp &gt; <span class="pl-c1">0</span>) {
-        <span class="pl-k">if</span> (exp % <span class="pl-c1">2</span> == <span class="pl-c1">1</span>) res = (res * base) % MOD; 
-        base = (base * base) % MOD; 
+        <span class="pl-k">if</span> (exp % <span class="pl-c1">2</span> == <span class="pl-c1">1</span>) res = (res * base) % <span class="pl-c1">MOD</span>; 
+        base = (base * base) % <span class="pl-c1">MOD</span>; 
         exp /= <span class="pl-c1">2</span>; 
     }
     <span class="pl-k">return</span> res;
@@ -650,25 +650,25 @@ $W_m = C^m k^n - C \sum_{i=<span class="pl-c1">1</span>}^m C^{m-i} \binom{n+i-<s
 
 <span class="pl-c"><span class="pl-c">//</span> Modular inverse using Fermat's Little Theorem</span>
 <span class="pl-k">long</span> <span class="pl-k">long</span> <span class="pl-en">modInverse</span>(<span class="pl-k">long</span> <span class="pl-k">long</span> n) {
-    n %= MOD;
-    <span class="pl-k">if</span> (n &lt; <span class="pl-c1">0</span>) n += MOD; 
+    n %= <span class="pl-c1">MOD</span>;
+    <span class="pl-k">if</span> (n &lt; <span class="pl-c1">0</span>) n += <span class="pl-c1">MOD</span>; 
     <span class="pl-k">if</span> (n == <span class="pl-c1">0</span>) <span class="pl-k">return</span> -<span class="pl-c1">1</span>; <span class="pl-c"><span class="pl-c">//</span> Inverse of 0 does not exist</span>
-    <span class="pl-k">return</span> <span class="pl-c1">power</span>(n, MOD - <span class="pl-c1">2</span>);
+    <span class="pl-k">return</span> <span class="pl-c1">power</span>(n, <span class="pl-c1">MOD</span> - <span class="pl-c1">2</span>);
 }
 
 <span class="pl-c"><span class="pl-c">//</span> Precompute factorials and their modular inverses up to N</span>
 <span class="pl-k">void</span> <span class="pl-en">precompute_combinations</span>(<span class="pl-k">int</span> N) {
     <span class="pl-k">if</span> (N &lt; <span class="pl-c1">0</span>) <span class="pl-k">return</span>; 
-    <span class="pl-k">if</span> (N &gt;= MAX_N_PLUS_M) N = MAX_N_PLUS_M - <span class="pl-c1">1</span>; 
+    <span class="pl-k">if</span> (N &gt;= <span class="pl-c1">MAX_N_PLUS_M</span>) N = <span class="pl-c1">MAX_N_PLUS_M</span> - <span class="pl-c1">1</span>; 
     fact[<span class="pl-c1">0</span>] = <span class="pl-c1">1</span>; 
     <span class="pl-k">for</span> (<span class="pl-k">int</span> i = <span class="pl-c1">1</span>; i &lt;= N; i++) {
-        fact[i] = (fact[i - <span class="pl-c1">1</span>] * i) % MOD;
+        fact[i] = (fact[i - <span class="pl-c1">1</span>] * i) % <span class="pl-c1">MOD</span>;
     }
     <span class="pl-k">long</span> <span class="pl-k">long</span> invN = <span class="pl-c1">modInverse</span>(fact[N]);
     <span class="pl-k">if</span> (invN == -<span class="pl-c1">1</span>) { <span class="pl-k">return</span>; } <span class="pl-c"><span class="pl-c">//</span> Error handling if needed</span>
     invFact[N] = invN;
     <span class="pl-k">for</span> (<span class="pl-k">int</span> i = N - <span class="pl-c1">1</span>; i &gt;= <span class="pl-c1">0</span>; i--) {
-        invFact[i] = (invFact[i + <span class="pl-c1">1</span>] * (i + <span class="pl-c1">1</span>)) % MOD;
+        invFact[i] = (invFact[i + <span class="pl-c1">1</span>] * (i + <span class="pl-c1">1</span>)) % <span class="pl-c1">MOD</span>;
     }
 }
 
@@ -677,21 +677,21 @@ $W_m = C^m k^n - C \sum_{i=<span class="pl-c1">1</span>}^m C^{m-i} \binom{n+i-<s
     <span class="pl-k">if</span> (r &lt; <span class="pl-c1">0</span> || r &gt; n) {
         <span class="pl-k">return</span> <span class="pl-c1">0</span>;
     }
-    <span class="pl-k">if</span> (n &gt;= MAX_N_PLUS_M) { <span class="pl-k">return</span> <span class="pl-c1">0</span>; } 
+    <span class="pl-k">if</span> (n &gt;= <span class="pl-c1">MAX_N_PLUS_M</span>) { <span class="pl-k">return</span> <span class="pl-c1">0</span>; } 
     
     <span class="pl-c"><span class="pl-c">//</span> Ensure n, r, n-r indices are valid for precomputed arrays</span>
-    <span class="pl-k">if</span> (r &gt;= MAX_N_PLUS_M || (n-r) &lt; <span class="pl-c1">0</span> || (n-r) &gt;= MAX_N_PLUS_M) {
+    <span class="pl-k">if</span> (r &gt;= <span class="pl-c1">MAX_N_PLUS_M</span> || (n-r) &lt; <span class="pl-c1">0</span> || (n-r) &gt;= <span class="pl-c1">MAX_N_PLUS_M</span>) {
         <span class="pl-c"><span class="pl-c">//</span> This should not happen if n &lt; MAX_N_PLUS_M and r &lt;= n</span>
         <span class="pl-k">return</span> <span class="pl-c1">0</span>; 
     }
 
-    <span class="pl-k">return</span> (((fact[n] * invFact[r]) % MOD) * invFact[n - r]) % MOD;
+    <span class="pl-k">return</span> (((fact[n] * invFact[r]) % <span class="pl-c1">MOD</span>) * invFact[n - r]) % <span class="pl-c1">MOD</span>;
 }
 
 
 <span class="pl-k">int</span> <span class="pl-en">main</span>() {
     <span class="pl-c"><span class="pl-c">//</span> Precompute combinations up to n+m-2. Needs index up to MAX_N_PLUS_M-1.</span>
-    <span class="pl-c1">precompute_combinations</span>(MAX_N_PLUS_M - <span class="pl-c1">1</span>); 
+    <span class="pl-c1">precompute_combinations</span>(<span class="pl-c1">MAX_N_PLUS_M</span> - <span class="pl-c1">1</span>); 
 
     <span class="pl-k">int</span> T; 
     <span class="pl-c1">read</span>(T); 
@@ -721,21 +721,21 @@ $W_m = C^m k^n - C \sum_{i=<span class="pl-c1">1</span>}^m C^{m-i} \binom{n+i-<s
         <span class="pl-c"><span class="pl-c">//</span> General case k &gt; 1</span>
         
         <span class="pl-k">long</span> <span class="pl-k">long</span> k_ll = k; 
-        <span class="pl-k">long</span> <span class="pl-k">long</span> k_minus_1 = (k_ll - <span class="pl-c1">1</span> + MOD) % MOD;
+        <span class="pl-k">long</span> <span class="pl-k">long</span> k_minus_1 = (k_ll - <span class="pl-c1">1</span> + <span class="pl-c1">MOD</span>) % <span class="pl-c1">MOD</span>;
         <span class="pl-k">long</span> <span class="pl-k">long</span> inv_k_minus_1 = <span class="pl-c1">modInverse</span>(k_minus_1);
         <span class="pl-k">if</span> (inv_k_minus_1 == -<span class="pl-c1">1</span>) { <span class="pl-k">continue</span>; } <span class="pl-c"><span class="pl-c">//</span> Should not happen</span>
 
         <span class="pl-c"><span class="pl-c">//</span> C = k / (k-1) mod P</span>
-        <span class="pl-k">long</span> <span class="pl-k">long</span> C = (k_ll * inv_k_minus_1) % MOD;
+        <span class="pl-k">long</span> <span class="pl-k">long</span> C = (k_ll * inv_k_minus_1) % <span class="pl-c1">MOD</span>;
 
         <span class="pl-c"><span class="pl-c">//</span> Check bounds for m</span>
         <span class="pl-k">if</span> (m &lt; <span class="pl-c1">0</span>) { <span class="pl-c"><span class="pl-c">/*</span> handle appropriately <span class="pl-c">*/</span></span> <span class="pl-k">continue</span>; } <span class="pl-c"><span class="pl-c">//</span> m &gt;= 1 in problem</span>
-        <span class="pl-k">if</span> (m &gt;= MAX_M) { <span class="pl-c"><span class="pl-c">/*</span> Error: m too large for C_powers array <span class="pl-c">*/</span></span> <span class="pl-k">continue</span>;} 
+        <span class="pl-k">if</span> (m &gt;= <span class="pl-c1">MAX_M</span>) { <span class="pl-c"><span class="pl-c">/*</span> Error: m too large for C_powers array <span class="pl-c">*/</span></span> <span class="pl-k">continue</span>;} 
 
         <span class="pl-c"><span class="pl-c">//</span> Precompute powers C^0 to C^m</span>
         C_powers[<span class="pl-c1">0</span>] = <span class="pl-c1">1</span>;
         <span class="pl-k">for</span>(<span class="pl-k">int</span> i=<span class="pl-c1">1</span>; i &lt;= m; ++i) {
-             C_powers[i] = (C_powers[i-<span class="pl-c1">1</span>] * C) % MOD;
+             C_powers[i] = (C_powers[i-<span class="pl-c1">1</span>] * C) % <span class="pl-c1">MOD</span>;
         }
 
         <span class="pl-c"><span class="pl-c">//</span> Calculate k^n</span>
@@ -750,17 +750,17 @@ $W_m = C^m k^n - C \sum_{i=<span class="pl-c1">1</span>}^m C^{m-i} \binom{n+i-<s
              <span class="pl-c"><span class="pl-c">//</span> Calculate binomial term C(n+i-2, i-1)</span>
              <span class="pl-k">long</span> <span class="pl-k">long</span> binom_term = <span class="pl-c1">nCr_mod</span>(n + i - <span class="pl-c1">2</span>, i - <span class="pl-c1">1</span>);
              <span class="pl-c"><span class="pl-c">//</span> Calculate term = C^{m-i} * BinomialTerm % MOD</span>
-             <span class="pl-k">long</span> <span class="pl-k">long</span> term = (C_pow_m_minus_i * binom_term) % MOD;
+             <span class="pl-k">long</span> <span class="pl-k">long</span> term = (C_pow_m_minus_i * binom_term) % <span class="pl-c1">MOD</span>;
              <span class="pl-c"><span class="pl-c">//</span> Add to the sum</span>
-             sum_term = (sum_term + term) % MOD;
+             sum_term = (sum_term + term) % <span class="pl-c1">MOD</span>;
         }
 
         <span class="pl-c"><span class="pl-c">//</span> Calculate W_m = C^m * k^n - C * Sum (mod P)</span>
-        <span class="pl-k">long</span> <span class="pl-k">long</span> final_sum_part = (C * sum_term) % MOD;
-        <span class="pl-k">long</span> <span class="pl-k">long</span> first_part = (Cm * k_pow_n) % MOD;
+        <span class="pl-k">long</span> <span class="pl-k">long</span> final_sum_part = (C * sum_term) % <span class="pl-c1">MOD</span>;
+        <span class="pl-k">long</span> <span class="pl-k">long</span> first_part = (Cm * k_pow_n) % <span class="pl-c1">MOD</span>;
 
         <span class="pl-c"><span class="pl-c">//</span> Calculate Result = (first_part - final_sum_part) mod P, ensuring non-negative result</span>
-        <span class="pl-k">long</span> <span class="pl-k">long</span> result = (first_part - final_sum_part + MOD) % MOD;
+        <span class="pl-k">long</span> <span class="pl-k">long</span> result = (first_part - final_sum_part + <span class="pl-c1">MOD</span>) % <span class="pl-c1">MOD</span>;
 
         <span class="pl-c"><span class="pl-c">//</span> Output the result for the test case</span>
         <span class="pl-c1">writeln</span>(result);
@@ -791,16 +791,16 @@ $W_m = C^m k^n - C \sum_{i=<span class="pl-c1">1</span>}^m C^{m-i} \binom{n+i-<s
 #<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>bits/stdc++.h<span class="pl-pds">&gt;</span></span>
 <span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
 
-<span class="pl-k">const</span> <span class="pl-k">int</span> MOD = <span class="pl-c1">998244353</span>;
-<span class="pl-k">const</span> <span class="pl-k">int</span> MAX_FACT = <span class="pl-c1">4e6</span> + <span class="pl-c1">10</span>;
+<span class="pl-k">const</span> <span class="pl-k">int</span> <span class="pl-c1">MOD</span> = <span class="pl-c1">998244353</span>;
+<span class="pl-k">const</span> <span class="pl-k">int</span> <span class="pl-c1">MAX_FACT</span> = <span class="pl-c1">4e6</span> + <span class="pl-c1">10</span>;
 
-vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-en">fact</span>(MAX_FACT), inv_fact(MAX_FACT);
+vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-en">fact</span>(<span class="pl-c1">MAX_FACT</span>), inv_fact(<span class="pl-c1">MAX_FACT</span>);
 
 <span class="pl-k">int</span> <span class="pl-en">pow_mod</span>(<span class="pl-k">int</span> a, <span class="pl-k">int</span> b) {
     <span class="pl-k">int</span> res = <span class="pl-c1">1</span>;
     <span class="pl-k">while</span> (b) {
-        <span class="pl-k">if</span> (b &amp; <span class="pl-c1">1</span>) res = <span class="pl-c1">1LL</span> * res * a % MOD;
-        a = <span class="pl-c1">1LL</span> * a * a % MOD;
+        <span class="pl-k">if</span> (b &amp; <span class="pl-c1">1</span>) res = <span class="pl-c1">1LL</span> * res * a % <span class="pl-c1">MOD</span>;
+        a = <span class="pl-c1">1LL</span> * a * a % <span class="pl-c1">MOD</span>;
         b &gt;&gt;= <span class="pl-c1">1</span>;
     }
     <span class="pl-k">return</span> res;
@@ -808,18 +808,18 @@ vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-en">fact</span>(MAX_
 
 <span class="pl-k">void</span> <span class="pl-en">precompute</span>() {
     fact[<span class="pl-c1">0</span>] = <span class="pl-c1">1</span>;
-    <span class="pl-k">for</span> (<span class="pl-k">int</span> i = <span class="pl-c1">1</span>; i &lt; MAX_FACT; ++i) {
-        fact[i] = <span class="pl-c1">1LL</span> * fact[i-<span class="pl-c1">1</span>] * i % MOD;
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> i = <span class="pl-c1">1</span>; i &lt; <span class="pl-c1">MAX_FACT</span>; ++i) {
+        fact[i] = <span class="pl-c1">1LL</span> * fact[i-<span class="pl-c1">1</span>] * i % <span class="pl-c1">MOD</span>;
     }
-    inv_fact[MAX_FACT-<span class="pl-c1">1</span>] = <span class="pl-c1">pow_mod</span>(fact[MAX_FACT-<span class="pl-c1">1</span>], MOD-<span class="pl-c1">2</span>);
-    <span class="pl-k">for</span> (<span class="pl-k">int</span> i = MAX_FACT-<span class="pl-c1">2</span>; i &gt;= <span class="pl-c1">0</span>; --i) {
-        inv_fact[i] = <span class="pl-c1">1LL</span> * inv_fact[i+<span class="pl-c1">1</span>] * (i+<span class="pl-c1">1</span>) % MOD;
+    inv_fact[<span class="pl-c1">MAX_FACT</span>-<span class="pl-c1">1</span>] = <span class="pl-c1">pow_mod</span>(fact[<span class="pl-c1">MAX_FACT</span>-<span class="pl-c1">1</span>], <span class="pl-c1">MOD</span>-<span class="pl-c1">2</span>);
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> i = <span class="pl-c1">MAX_FACT</span>-<span class="pl-c1">2</span>; i &gt;= <span class="pl-c1">0</span>; --i) {
+        inv_fact[i] = <span class="pl-c1">1LL</span> * inv_fact[i+<span class="pl-c1">1</span>] * (i+<span class="pl-c1">1</span>) % <span class="pl-c1">MOD</span>;
     }
 }
 
 <span class="pl-k">int</span> <span class="pl-en">comb</span>(<span class="pl-k">int</span> a, <span class="pl-k">int</span> b) {
     <span class="pl-k">if</span> (a &lt; <span class="pl-c1">0</span> || b &lt; <span class="pl-c1">0</span> || a &lt; b) <span class="pl-k">return</span> <span class="pl-c1">0</span>;
-    <span class="pl-k">return</span> <span class="pl-c1">1LL</span> * fact[a] * inv_fact[b] % MOD * inv_fact[a - b] % MOD;
+    <span class="pl-k">return</span> <span class="pl-c1">1LL</span> * fact[a] * inv_fact[b] % <span class="pl-c1">MOD</span> * inv_fact[a - b] % <span class="pl-c1">MOD</span>;
 }
 
 <span class="pl-k">int</span> <span class="pl-en">main</span>() {
@@ -846,15 +846,15 @@ vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-en">fact</span>(MAX_
             <span class="pl-k">continue</span>;
         }
 
-        <span class="pl-k">int</span> S1;
+        <span class="pl-k">int</span> <span class="pl-c1">S1</span>;
         <span class="pl-k">if</span> (k == <span class="pl-c1">1</span>) {
-            S1 = (n - <span class="pl-c1">1</span>) % MOD;
+            <span class="pl-c1">S1</span> = (n - <span class="pl-c1">1</span>) % <span class="pl-c1">MOD</span>;
         } <span class="pl-k">else</span> {
             <span class="pl-k">int</span> kn = <span class="pl-c1">pow_mod</span>(k, n-<span class="pl-c1">1</span>);
-            S1 = <span class="pl-c1">1LL</span> * k * (kn - <span class="pl-c1">1</span>) % MOD;
-            S1 = <span class="pl-c1">1LL</span> * S1 * <span class="pl-c1">pow_mod</span>(k-<span class="pl-c1">1</span>, MOD-<span class="pl-c1">2</span>) % MOD;
+            <span class="pl-c1">S1</span> = <span class="pl-c1">1LL</span> * k * (kn - <span class="pl-c1">1</span>) % <span class="pl-c1">MOD</span>;
+            <span class="pl-c1">S1</span> = <span class="pl-c1">1LL</span> * <span class="pl-c1">S1</span> * <span class="pl-c1">pow_mod</span>(k-<span class="pl-c1">1</span>, <span class="pl-c1">MOD</span>-<span class="pl-c1">2</span>) % <span class="pl-c1">MOD</span>;
         }
-        <span class="pl-k">int</span> term2 = <span class="pl-c1">1LL</span> * m * S1 % MOD;
+        <span class="pl-k">int</span> term2 = <span class="pl-c1">1LL</span> * m * <span class="pl-c1">S1</span> % <span class="pl-c1">MOD</span>;
 
         <span class="pl-k">int</span> term3 = <span class="pl-c1">0</span>;
         <span class="pl-k">int</span> max_d = n - <span class="pl-c1">2</span>;
@@ -870,18 +870,18 @@ vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-en">fact</span>(MAX_
 
             <span class="pl-k">int</span> s;
             <span class="pl-k">if</span> (k == <span class="pl-c1">1</span>) {
-                s = rem % MOD;
+                s = rem % <span class="pl-c1">MOD</span>;
             } <span class="pl-k">else</span> {
                 <span class="pl-k">int</span> kr = <span class="pl-c1">pow_mod</span>(k, rem);
-                s = <span class="pl-c1">1LL</span> * k * (kr - <span class="pl-c1">1</span>) % MOD;
-                s = <span class="pl-c1">1LL</span> * s * <span class="pl-c1">pow_mod</span>(k - <span class="pl-c1">1</span>, MOD-<span class="pl-c1">2</span>) % MOD;
+                s = <span class="pl-c1">1LL</span> * k * (kr - <span class="pl-c1">1</span>) % <span class="pl-c1">MOD</span>;
+                s = <span class="pl-c1">1LL</span> * s * <span class="pl-c1">pow_mod</span>(k - <span class="pl-c1">1</span>, <span class="pl-c1">MOD</span>-<span class="pl-c1">2</span>) % <span class="pl-c1">MOD</span>;
             }
 
-            term3 = (term3 + <span class="pl-c1">1LL</span> * c * s) % MOD;
+            term3 = (term3 + <span class="pl-c1">1LL</span> * c * s) % <span class="pl-c1">MOD</span>;
         }
 
-        <span class="pl-k">int</span> total = (term1 + term2) % MOD;
-        total = (total + term3) % MOD;
+        <span class="pl-k">int</span> total = (term1 + term2) % <span class="pl-c1">MOD</span>;
+        total = (total + term3) % <span class="pl-c1">MOD</span>;
         cout &lt;&lt; total &lt;&lt; <span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\n</span><span class="pl-pds">'</span></span>;
     }
 
@@ -1505,7 +1505,7 @@ if(""!=""){
     var startSite=new Date("");
     var diff=now.getTime()-startSite.getTime();
     var diffDay=Math.floor(diff/(1000*60*60*24));
-    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
 }
 </script></div>
 </body>
@@ -1550,6 +1550,7 @@ document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
 function openComments(){
     cm=document.getElementById("comments");
     cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
     cmButton.innerHTML="loading";
     span=document.createElement("span");
     span.setAttribute("class","AnimatedEllipsis");
